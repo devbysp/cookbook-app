@@ -18,4 +18,4 @@ COPY . .
 # Expose the port on which the app listens
 EXPOSE 8080
 
-CMD ["node", "index.js"]
+CMD ["node", "src/index.js"]
