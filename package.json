@@ -6,7 +6,7 @@
   "scripts": {
     "start": "PORT=${3000} BASE_PATH=${kcal-app} node src/index",
     "build": "docker build . -t devbysp/kcal-app-backend:1.0",
-    "deploy": "docker run --name Kcal-App-Backend-V1.2 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.0"
+    "deploy": "docker run --name Kcal-App-Backend-V1.0 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.0"
   },
   "author": "Magyari Zoltán",
   "license": "ISC",
