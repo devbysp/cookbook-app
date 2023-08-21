@@ -4,9 +4,9 @@
   "description": "backend for kcal-app-react",
   "main": "index.js",
   "scripts": {
-    "start": "PORT=${PORT:-8080} BASE_PATH=${BASE_PATH:-kcal-app} node src/index",
-    "build-docker": "docker build . -t devbysp/kcal-app:1.1",
-    "run-docker": "docker run -d -p 5000:8080 devbysp/kcal-app:1.1"
+    "start": "PORT=${3000} BASE_PATH=${kcal-app} node src/index",
+    "build-docker": "docker build . -t devbysp/kcal-app:1.2",
+    "run-docker": "docker run -d -e PORT='8080' -e BAS_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app:1.2 --name KcalAppV1.2"
   },
   "author": "Magyari Zoltán",
   "license": "ISC",
