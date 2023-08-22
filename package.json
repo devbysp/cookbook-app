@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "mkdirp db && cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index",
-    "build": "docker build . -t devbysp/kcal-app-backend:1.0",
-    "deploy": "docker run --name Kcal-App-Backend-V1.0 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.0",
+    "build": "docker build . -t devbysp/kcal-app-backend:1.1",
+    "deploy": "docker run --name Kcal-App-Backend-V1.1 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.1",
     "create-key": "mkdirp cert && openssl genrsa -out cert/key.pem",
     "create-sign-req": "openssl req -new -key cert/key.pem -out cert/csr.pem",
     "create-cert": "openssl x509 -req -days 1825 -in cert/csr.pem -signkey cert/key.pem -out cert/cert.pem && rm cert/csr.pem"
