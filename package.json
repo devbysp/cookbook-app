@@ -4,9 +4,9 @@
   "description": "backend for kcal-app-react",
   "main": "index.js",
   "scripts": {
-    "start": "mkdirp db && cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index",
-    "build": "docker build . -t devbysp/kcal-app-backend:1.3",
-    "deploy": "docker run --name Kcal-App-Backend-V1.3 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.3",
+    "start": "mkdirp db && cross-env SERVER=http://localhost:3000 cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index",
+    "build": "docker build . -t devbysp/kcal-app-backend:1.4",
+    "deploy": "docker run --name Kcal-App-Backend-V1.4 -d -e SERVER=https://github.com -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.4",
     "create-cert": "create-cert.sh"
   },
   "author": "Magyari Zoltán",
