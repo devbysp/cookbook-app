@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "mkdirp db && cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index",
-    "build": "docker build . -t devbysp/kcal-app-backend:1.2",
-    "deploy": "docker run --name Kcal-App-Backend-V1.2 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.2",
+    "build": "docker build . -t devbysp/kcal-app-backend:1.3",
+    "deploy": "docker run --name Kcal-App-Backend-V1.3 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.3",
     "create-cert": "create-cert.sh"
   },
   "author": "Magyari Zoltán",
