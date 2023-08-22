@@ -23,6 +23,7 @@ app.use(cors({
   origin: `${server}`,
   allowedHeaders: ['Content-Type', 'Authorization'],
   maxAge: 600,
+  credentials: true,
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
