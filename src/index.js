@@ -1,6 +1,5 @@
 const https = require('https');
 const fs = require('fs');
-const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3');
@@ -19,11 +18,9 @@ const db = new sqlite3.Database('db/food.db');
 /* -------------------------------------------------------------------------- *
  * Application configurations
  * -------------------------------------------------------------------------- */
-app.use(cors({
-  origin: `${server}`,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  maxAge: 600,
-  credentials: true,
+app.use(cors((req, callback) => {
+  console.debug('Origin:', req.headers.origin);
+  callback(null, `${server}`);
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
