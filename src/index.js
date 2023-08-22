@@ -18,7 +18,11 @@ const db = new sqlite3.Database('db/food.db');
 /* -------------------------------------------------------------------------- *
  * Application configurations
  * -------------------------------------------------------------------------- */
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 600,
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
