@@ -12,23 +12,24 @@ const { getAllFoods, addNewFood, deleteFood } = require('./database/database');
 
 const app = express();
 const port = process.env.PORT || 8080;
-const sslServer = https.createServer({
-  key: fs.readFileSync(path.join('cert', 'key.pem')),
-  cert: fs.readFileSync(path.join('cert', 'cert.pem')),
-}, app);
 const basePath = withSlash(process.env.BASE_PATH || 'kcal-app');
 const db = new sqlite3.Database('db/food.db');
 
 /* -------------------------------------------------------------------------- *
  * Application configurations
  * -------------------------------------------------------------------------- */
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 /* -------------------------------------------------------------------------- *
  * Application init
  * -------------------------------------------------------------------------- */
+const sslServer = https.createServer({
+  key: fs.readFileSync('cert/key.pem'),
+  cert: fs.readFileSync('cert/cert.pem'),
+}, app);
+
 sslServer.listen(port, (res) => {
   console.debug(`KCal app server is up. Base path is '${basePath}'. Listens on port ${port}`);
   createFoodTable(res, db);
