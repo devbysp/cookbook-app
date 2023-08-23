@@ -4,7 +4,7 @@
   "description": "backend for kcal-app-react",
   "main": "src/index.js",
   "scripts": {
-    "start": "mkdirp db cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index.js",
+    "start": "mkdirp db && cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index.js",
     "build": "docker build . -t devbysp/kcal-app-backend:1.5",
     "deploy": "docker run --name Kcal-App-Backend-V1.5 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.5"
   },
