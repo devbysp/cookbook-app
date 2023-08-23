@@ -1,10 +1,11 @@
+const logger = require('../logger');
 const queries = require('./queries');
 
 function getAllFoods(res, db) {
   db.all(queries.SELECT_ALL_FOODS, (error, foods) => {
     if (error) {
       res.status(500).send(error);
-      console.error(error);
+      logger.crit(error);
       return;
     }
 
@@ -25,7 +26,7 @@ function addNewFood(res, db, food) {
   ), (error) => {
     if (error) {
       res.status(500).send(error);
-      console.error(error);
+      logger.crit(error);
       return;
     }
     res.send();
@@ -36,7 +37,7 @@ function deleteFood(res, db, id) {
   db.run(queries.DELETE_FOOD(id), (error) => {
     if (error) {
       res.status(500).send(error);
-      console.error(error);
+      logger.crit(error);
       return;
     }
     res.send();

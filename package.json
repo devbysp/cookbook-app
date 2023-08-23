@@ -13,9 +13,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "winston": "^3.10.0"
   },
   "devDependencies": {
+    "cross": "^1.0.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.47.0",
     "eslint-config-airbnb-base": "^15.0.0",

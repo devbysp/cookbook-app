@@ -1,5 +1,7 @@
 node_modules
 tmp
+db
 stderr.log
 package-lock.json
+server.log
 food.db

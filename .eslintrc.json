@@ -10,6 +10,7 @@
     },
     "rules": {
         "import/prefer-default-export": "off",
+        "import/no-dynamic-require": "off",
         "react/prop-types": "off",
         "no-console": "off",
         "valid-typeof": "off"

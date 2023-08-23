@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3');
+const logger = require('./logger');
 
 const { withSlash } = require('./helpers/utils');
 const { validateNewFood } = require('./helpers/validation');
@@ -23,7 +24,7 @@ app.use(express.json());
  * Application init
  * -------------------------------------------------------------------------- */
 app.listen(port, (res) => {
-  console.error(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
+  logger.debug(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
   createFoodTable(res, db);
 });
 
@@ -31,23 +32,23 @@ app.listen(port, (res) => {
  * API endpoints
  * -------------------------------------------------------------------------- */
 app.get(`${basePath}/food`, (req, res) => {
-  console.debug('GET', req.url);
+  logger.debug(`GET ${req.url}`);
   getAllFoods(res, db);
 });
 
 app.post(`${basePath}/food`, (req, res) => {
-  console.debug('POST', req.url, req.body);
+  logger.debug(`POST ${req.url} ${req.body}`);
   validateNewFood(
     req.body,
     () => addNewFood(res, db, req.body),
     (message) => {
-      console.debug({ message });
+      logger.debug({ message });
       res.status(400).send(message);
     },
   );
 });
 
 app.delete(`${basePath}/food/:id`, (req, res) => {
-  console.debug('DELETE', req.url);
+  logger.debug(`DELETE ${req.url}`);
   deleteFood(res, db, req.params.id);
 });
