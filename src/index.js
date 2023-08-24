@@ -10,6 +10,7 @@ const { getAllFoods, addNewFood, deleteFood } = require('./database/database');
 
 const app = express();
 const port = process.env.PORT || 8080;
+// const server = process.env.SERVER || '*';
 const basePath = withSlash(process.env.BASE_PATH || 'kcal-app');
 const db = new sqlite3.Database('db/food.db');
 
@@ -17,6 +18,21 @@ const db = new sqlite3.Database('db/food.db');
  * Application configurations
  * -------------------------------------------------------------------------- */
 app.use(cors());
+
+// app.use(cors({
+//   origin: `${server}`,
+//   allowedHeaders: ['Origin', 'Content-Type', 'Authorization', 'Accept'],
+//   maxAge: 600,
+//   credentials: true,
+// }));
+
+// app.use((_req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Vary', 'Origin');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
