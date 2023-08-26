@@ -1,6 +1,7 @@
 version: '3'
 services:
-  container_name: backend-v${TAG}:
+  backend:
+    container_name: backend-v${TAG}:
     image: devbysp/kcal-app-backend:${TAG}
     ports:
       - ${PORT}:8080
