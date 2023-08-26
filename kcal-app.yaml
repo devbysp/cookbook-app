@@ -1,9 +1,9 @@
 version: '3'
 services:
-  kcal-app-v1.7:
-    image: devbysp/kcal-app-backend:1.7
+  backend-v${TAG}:
+    image: devbysp/kcal-app-backend:${TAG}
     ports:
-      - 443:8080
+      - ${PORT}:8080
     environment:
       - PORT = 8080
       - BASE_PATH = kcal-app
