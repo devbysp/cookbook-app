@@ -1,7 +1,8 @@
 node_modules
+cert
 tmp
 db
-stderr.log
 package-lock.json
 server.log
+stderr.log
 food.db
