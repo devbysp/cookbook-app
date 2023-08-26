@@ -27,7 +27,7 @@ app.use(express.json());
  * -------------------------------------------------------------------------- */
 let server = app;
 if (fs.existsSync('cert/key.pem') && fs.existsSync('cert/cert.pem')) {
-  // Create https server if certs exists
+  logger.debug('Configure HTTPS protocol');
   server = https.createServer({
     key: fs.readFileSync('cert/key.pem'),
     cert: fs.readFileSync('cert/cert.pem'),
