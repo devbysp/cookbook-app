@@ -4,7 +4,7 @@
   "description": "backend for kcal-app-react",
   "main": "src/index.js",
   "scripts": {
-    "start": "mkdirp db && cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index.js",
+    "start": "mkdirp db && cross-env PORT=4000 cross-env BASE_PATH=kcal-app nodemon src/index.js",
     "docker-build": "docker build . -t devbysp/kcal-app-backend:1.6",
     "docker-run": "docker run --name Kcal-App-Backend-V1.6 -d -e PORT='8080' -e BASE_PATH='kcal-app' -p 3200:8080 devbysp/kcal-app-backend:1.6"
   },
@@ -17,6 +17,9 @@
     "winston": "^3.10.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.5.6",
     "cross": "^1.0.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.47.0",
@@ -25,6 +28,7 @@
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-promise": "^6.1.1",
-    "mkdirp": "^3.0.1"
+    "mkdirp": "^3.0.1",
+    "nodemon": "^3.0.1"
   }
 }
