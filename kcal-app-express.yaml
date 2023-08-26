@@ -1,0 +1,10 @@
+version: '3'
+services:
+  kcal-app-v1.7:
+    image: kcal-app:v1.7
+    ports:
+      - 443:8080
+    environment:
+      - PORT = 8080
+      - BASE_PATH = kcal-app
+      - ENABLE_CORS = true
