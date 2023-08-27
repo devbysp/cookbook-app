@@ -23,7 +23,7 @@ app.use(express.json());
 /* -------------------------------------------------------------------------- *
  * Application init
  * -------------------------------------------------------------------------- */
-app.listen(port, (res) => {
+app.listen(port, (_req, res) => {
   logger.debug(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
   createFoodTable(res, db);
 });
