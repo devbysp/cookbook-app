@@ -8,17 +8,19 @@ WORKDIR /usr/src/kcal-app
 # copied where available.
 COPY package*.json ./
 
-# Sqlite can not create the database folder. It needs to exist already.
-RUN mkdir db
-
 # Building code for production, otherwise
 # RUN npm install
 RUN npm ci --omit=dev
+
+# Sqlite can not create the database folder. It needs to exist already.
+RUN mkdir db
 
 # Boundle app sources
 COPY . .
 
 # Expose the port on which the app listens
 EXPOSE 8080
+
+USER = node
 
 CMD ["node", "src/index.js"]
