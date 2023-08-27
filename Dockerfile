@@ -21,6 +21,8 @@ COPY . .
 # Expose the port on which the app listens
 EXPOSE 8080
 
-USER = node
+RUN chown -R node:node .
+
+USER node
 
 CMD ["node", "src/index.js"]
