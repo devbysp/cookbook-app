@@ -14,17 +14,11 @@ RUN npm ci --omit=dev
 
 # Sqlite can not create the database folder. It needs to exist already.
 RUN mkdir db
-RUN touch db/food.db
-RUN chown -R node:node db
 
 # Boundle app sources
 COPY . .
 
 # Expose the port on which the app listens
 EXPOSE 8080
-
-RUN chown -R node:node .
-
-USER node
 
 CMD ["node", "src/index.js"]
