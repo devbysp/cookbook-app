@@ -3,12 +3,10 @@ const app = require('./.logger.config');
 
 // Set up logger
 const customColors = {
-  trace: 'white',
-  debug: 'green',
+  debug: 'blue',
   info: 'green',
   warn: 'yellow',
-  crit: 'red',
-  fatal: 'red',
+  error: 'red',
 };
 
 const myformat = winston.format.combine(
