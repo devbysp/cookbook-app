@@ -3,7 +3,7 @@ const app = require('./.logger.config');
 
 // Set up logger
 const customColors = {
-  debug: 'blue',
+  debug: 'white',
   info: 'green',
   warn: 'yellow',
   error: 'red',
@@ -11,7 +11,7 @@ const customColors = {
 
 const myformat = winston.format.combine(
   winston.format.cli({ colors: customColors }),
-  winston.format.colorize(),
+  // winston.format.colorize(),
   winston.format.timestamp(),
   winston.format.align(),
   winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`),
