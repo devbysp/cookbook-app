@@ -48,7 +48,7 @@ logger.log = (level, msg) => {
     logger.debug('testing');
     logger.info('testing');
     logger.warn('testing');
-    logger.crit('testing');
+    logger.error('testing');
     logger.fatal('testing');
 */
 
