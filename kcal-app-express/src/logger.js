@@ -3,7 +3,7 @@ const app = require('./.logger.config');
 
 // Set up logger
 const customColors = {
-  debug: 'white',
+  debug: 'blue',
   info: 'green',
   warn: 'yellow',
   error: 'red',
