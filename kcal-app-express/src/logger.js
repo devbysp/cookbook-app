@@ -9,7 +9,7 @@ const customColors = {
   error: 'red',
 };
 
-const myformat = winston.format.combine(
+const customFormat = winston.format.combine(
   winston.format.cli({ colors: customColors }),
   winston.format.timestamp({
     format: 'YYYY-MM-DD - hh:mm:ss - SSS',
@@ -20,11 +20,10 @@ const myformat = winston.format.combine(
 
 const logger = winston.createLogger({
   level: app.settings.logLevel,
+  format: customFormat,
   transports: [
-    new (winston.transports.Console)({
-      format: myformat,
-    }),
-    // new (winston.transports.File)({ filename: 'server.log' }),
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'server.log' }),
   ],
 });
 
