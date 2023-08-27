@@ -1,9 +1,0 @@
-node_modules
-notes
-cert
-tmp
-db
-package-lock.json
-server.log
-stderr.log
-food.db

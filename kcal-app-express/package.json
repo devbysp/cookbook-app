@@ -1,13 +1,11 @@
 {
-  "name": "kcal-app-express",
-  "version": "1.7.0",
+  "name": "kcal-app-backend",
+  "version": "2.0.0",
   "description": "backend for kcal-app-react",
   "main": "src/index.js",
   "scripts": {
-    "start": "mkdirp db && cross-env PORT=4000 cross-env BASE_PATH=kcal-app node src/index.js",
-    "create-certs": "create-certs.sh",
-    "docker-build": "docker build . -t devbysp/kcal-app-backend:1.7",
-    "docker-run": "docker run --name Kcal-App-Backend-V1.7 -d -e ENABLE_CORS='true' -e PORT='8080' -e BASE_PATH='kcal-app' -p 443:8080 devbysp/kcal-app-backend:1.7"
+    "prestart": "mkdirp db",
+    "start": "cross-env PORT=4000 cross-env BASE_PATH=kcal-app cross-env DB=db/food.db node src/index.js"
   },
   "author": "Magyari Zoltán",
   "license": "ISC",
@@ -29,7 +27,6 @@
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-promise": "^6.1.1",
-    "mkdirp": "^3.0.1",
-    "nodemon": "^3.0.1"
+    "mkdirp": "^3.0.1"
   }
 }

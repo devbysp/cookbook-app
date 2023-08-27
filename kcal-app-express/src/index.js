@@ -1,8 +1,6 @@
 const express = require('express');
-const https = require('https');
-const cors = require('cors');
-const fs = require('fs');
 const sqlite3 = require('sqlite3');
+const cors = require('cors');
 const logger = require('./logger');
 
 const { withSlash } = require('./helpers/utils');
@@ -13,7 +11,7 @@ const { getAllFoods, addNewFood, deleteFood } = require('./database/database');
 const app = express();
 const port = process.env.PORT || 8080;
 const basePath = withSlash(process.env.BASE_PATH || 'kcal-app');
-const db = new sqlite3.Database('db/food.db');
+const db = new sqlite3.Database(process.env.DB || 'db/food.db');
 
 /* -------------------------------------------------------------------------- *
  * Application configurations
@@ -25,15 +23,7 @@ app.use(express.json());
 /* -------------------------------------------------------------------------- *
  * Application init
  * -------------------------------------------------------------------------- */
-let server = app;
-if (fs.existsSync('cert/key.pem') && fs.existsSync('cert/cert.pem')) {
-  logger.debug('Configure HTTPS protocol');
-  server = https.createServer({
-    key: fs.readFileSync('cert/key.pem'),
-    cert: fs.readFileSync('cert/cert.pem'),
-  }, app);
-}
-server.listen(port, (res) => {
+app.listen(port, (res) => {
   logger.debug(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
   createFoodTable(res, db);
 });

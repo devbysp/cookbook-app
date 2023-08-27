@@ -1,8 +1,0 @@
-node_modules
-notes
-db
-npm-debug.log
-.*
-*.sh
-*.log
-*.md
