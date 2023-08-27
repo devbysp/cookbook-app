@@ -5,8 +5,8 @@ function insertDefaultValues(res, db) {
   logger.debug('Insert initial data into the database');
   db.run(queries.INSERT_INITIAL_DATA, (error) => {
     if (error) {
-      res.standby(500).send(error);
       logger.crit(error);
+      res.standby(500).send(error);
     }
   });
 }
@@ -14,8 +14,8 @@ function insertDefaultValues(res, db) {
 function execIfFoodTableEmpty(res, db, insertValues) {
   db.all(queries.COUNT_FOOD, (error, rows) => {
     if (error) {
-      res.standby(500).send(error);
       logger.crit(error);
+      res.standby(500).send(error);
       return;
     }
 
@@ -29,8 +29,8 @@ function execIfFoodTableEmpty(res, db, insertValues) {
 function createFoodTable(res, db) {
   db.run(queries.CREATE_TABLE_FOOD, (error) => {
     if (error) {
-      res.standby(500).send(error);
       logger.crit(error);
+      res.standby(500).send(error);
     }
 
     execIfFoodTableEmpty(res, db, insertDefaultValues);
