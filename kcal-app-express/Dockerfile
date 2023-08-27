@@ -14,7 +14,8 @@ RUN npm ci --omit=dev
 
 # Sqlite can not create the database folder. It needs to exist already.
 RUN mkdir db
-RUN chown node:node db
+RUN touch db/food.db
+RUN chown -R node:node db
 
 # Boundle app sources
 COPY . .
