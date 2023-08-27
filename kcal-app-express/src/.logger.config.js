@@ -1,3 +1,3 @@
 exports.settings= {
-    logLevel: 'debug', // fatal, crit, warn, info, debug, trace
+    logLevel: 'debug', // debug, info, warn, error
 }
