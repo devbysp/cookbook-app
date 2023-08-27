@@ -1,4 +1,4 @@
-FROM node:20.5.1-alpine
+FROM node:16.14.2-alpine
 
 # Create app directory
 WORKDIR /usr/src/kcal-app
@@ -6,7 +6,7 @@ WORKDIR /usr/src/kcal-app
 # Install app dependencies
 # A wildchar is used to ensure both package.json and package-lock.json are
 # copied where available.
-COPY package*.json ./
+COPY package*.json .
 
 # Building code for production, otherwise
 # RUN npm install
