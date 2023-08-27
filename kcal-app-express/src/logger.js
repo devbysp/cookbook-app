@@ -11,8 +11,9 @@ const customColors = {
 
 const myformat = winston.format.combine(
   winston.format.cli({ colors: customColors }),
-  // winston.format.colorize(),
-  winston.format.timestamp(),
+  winston.format.timestamp({
+    format: 'YYYY-MM-DD - hh:mm:ss - SSS',
+  }),
   winston.format.align(),
   winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`),
 );
