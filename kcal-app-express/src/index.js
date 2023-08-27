@@ -24,8 +24,10 @@ app.use(express.json());
  * Application init
  * -------------------------------------------------------------------------- */
 app.listen(port, () => {
+  logger.debug('This is a test debug message!');
   logger.info(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
   logger.warn('This is a test warning!');
+  logger.error('This is a test error message!');
   createFoodTable(db);
 });
 
