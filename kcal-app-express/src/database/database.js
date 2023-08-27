@@ -4,8 +4,8 @@ const queries = require('./queries');
 function getAllFoods(res, db) {
   db.all(queries.SELECT_ALL_FOODS, (error, foods) => {
     if (error) {
+      logger.error(`Failed to select foods from food table. Reason: ${error}`);
       res.status(500).send(error);
-      logger.crit(error);
       return;
     }
 
@@ -25,8 +25,8 @@ function addNewFood(res, db, food) {
     food.protein,
   ), (error) => {
     if (error) {
+      logger.error(`Faield to insert new food. Reason: ${error}`);
       res.status(500).send(error);
-      logger.crit(error);
       return;
     }
     res.send();
@@ -36,8 +36,8 @@ function addNewFood(res, db, food) {
 function deleteFood(res, db, id) {
   db.run(queries.DELETE_FOOD(id), (error) => {
     if (error) {
+      logger.error(`Failed to delete food. Reason: ${error}`);
       res.status(500).send(error);
-      logger.crit(error);
       return;
     }
     res.send();

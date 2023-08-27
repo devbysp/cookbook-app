@@ -33,7 +33,6 @@ winston.addColors(customColors);
 
 // Extend logger object to properly log 'Error' types
 const origLog = logger.log;
-
 logger.log = (level, msg) => {
   const objType = Object.prototype.toString.call(msg);
   if (objType === '[object Error]') {
@@ -44,12 +43,10 @@ logger.log = (level, msg) => {
 };
 
 /* LOGGER EXAMPLES
-    logger.trace('testing');
     logger.debug('testing');
     logger.info('testing');
     logger.warn('testing');
     logger.error('testing');
-    logger.fatal('testing');
 */
 
 module.exports = logger;
