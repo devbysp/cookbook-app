@@ -4,8 +4,8 @@
   "description": "backend for kcal-app-react",
   "main": "src/index.js",
   "scripts": {
-    "prestart": "mkdirp db",
-    "start": "cross-env PORT=4000 cross-env BASE_PATH=kcal-app cross-env DB=db/food.db node src/index.js"
+    "prestart": "mkdirp ../db",
+    "start": "cross-env PORT=4000 cross-env BASE_PATH=kcal-app cross-env DB=../db/food.db node src/index.js"
   },
   "author": "Magyari Zoltán",
   "license": "ISC",
