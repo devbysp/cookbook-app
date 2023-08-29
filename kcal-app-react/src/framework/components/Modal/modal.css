@@ -1,0 +1,85 @@
+@import url("../../css/common.css");
+
+/* -------------------------------------------------------------------------- *
+ *                                     Modal
+ * -------------------------------------------------------------------------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* -------------------------------------------------------------------------- *
+ *                                    Dialog   
+ * -------------------------------------------------------------------------- */
+.dialog {
+  width: fit-content;
+  height: fit-content;
+
+  background-color: var(--dialog-bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* ------------------------------- Dialog Header ---------------------------- */
+.dialog > .dialog-header {
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: min-content;
+  grid-column-gap: var(--padding-left-right);
+  grid-row-gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+
+  font-size: var(--header-text-font-size);
+  font-weight: bold;
+  line-height: 1.5 * var(--header-text-font-size);
+
+  color: var(--header-text-color);
+  background: var(--header-bg-color);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+  user-select: none;
+}
+
+.dialog > .dialog-header > .button {
+  --shadow-color: 0deg 0% 10%;
+  --shadow-sm: hsl(var(--shadow-color)) 0px 1px 2px 0px;
+  --shadow: hsl(var(--shadow-color)) 0px 2px 4px 1px;
+}
+
+.dialog > .dialog-header > .dialog-title {
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+/* ------------------------------ Dialog body ------------------------------- */
+.dialog > .dialog-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+}
+
+/* ----------------------------- Dialog Actions ----------------------------- */
+.dialog .dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+}

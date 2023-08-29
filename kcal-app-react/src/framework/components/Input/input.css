@@ -1,0 +1,98 @@
+@import url("../../css/common.css");
+
+/* -------------------------------------------------------------------------- *
+ *                                   Label  
+ * -------------------------------------------------------------------------- */
+.label {
+  display: block;
+  margin: var(--margin-top-bottom) var(--margin-left-right);
+
+  font-size: var(--label-font-size);
+  color: var(--label-color);
+
+  user-select: none;
+}
+
+/* -------------------------------------------------------------------------- *
+ *                                   Input  
+ * -------------------------------------------------------------------------- */
+.input {
+  display: block;
+  margin: var(--margin-top-bottom) var(--margin-left-right);
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+
+  font-size: var(--text-font-size);
+  line-height: calc(1.5 * var(--text-font-size));
+
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--blue-2);
+}
+
+/* ------------------------------- Validation --------------------------------*/
+.input.success {
+  outline: 2px solid var(--green-2);
+}
+
+.input.error {
+  outline: 2px solid var(--red-2);
+}
+
+/* ----------------------------- Wrapped Input -------------------------------*/
+.wrapped > .input,
+.label > .input {
+  width: 100%;
+  margin: var(--margin-top-bottom) 0;
+}
+
+.label > .wrapped {
+  margin: 0;
+}
+
+.wrapped {
+  margin: 0 var(--margin-left-right);
+}
+
+/* -------------------------------------------------------------------------- *
+ *                             Validation message
+ * -------------------------------------------------------------------------- */
+.message {
+  margin: var(--margin-top-bottom) 0;
+  padding: var(--padding-top-bottom) 0.5rem;
+  width: 100%;
+
+  font-size: var(--message-font-size);
+}
+
+/* ------------------------------- Validation --------------------------------*/
+.message.success {
+  color: var(--green-3);
+}
+
+.message.error {
+  color: var(--red-3);
+}
+
+/* ---------------------------- Wrapped Message ------------------------------*/
+.wrapped > .message,
+.label > .message {
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------- *
+ *                                   Other
+ * -------------------------------------------------------------------------- */
+
+/* ---------------------- Hide text field spin buttons -----------------------*/
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input[type="number"] {
+  -moz-appearance: textfield;
+}

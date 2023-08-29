@@ -1,0 +1,72 @@
+@import url("../../css/common.css");
+
+/* -------------------------------------------------------------------------- *
+ *                                   Navbar  
+ * -------------------------------------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  background: var(--navbar-bg-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/*---------------------------------- Brand -----------------------------------*/
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: var(--margin-top-bottom) var(--margin-left-right);
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+
+  font-family: "Brand";
+  font-size: var(--brand-text-font-size);
+  line-height: calc(1.5 * var(--text-font-size));
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+
+  color: var(--gray-4);
+  background: var(--navbar-bg-color);
+  user-select: none;
+}
+
+/*--------------------------------- Toggler ----------------------------------*/
+.toggler {
+  --shadow-color: 0deg 0% 10%;
+  --shadow-sm: hsl(var(--shadow-color)) 0px 1px 2px 0px;
+  --shadow: hsl(var(--shadow-color)) 0px 2px 4px 1px;
+  --toggler-icon: url("../../icons/hamburger.svg");
+  --toggler-icon-size: 4.4rem;
+
+  display: inline-block;
+  width: var(--toggler-icon-size);
+  height: var(--toggler-icon-size);
+
+  background-image: var(--toggler-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  vertical-align: middle;
+
+  border: 2px solid var(--gray-6);
+}
+
+@media (min-width: 992px) {
+  .toggler {
+    display: none;
+  }
+}
+
+.toggler.float {
+  box-shadow: none;
+}

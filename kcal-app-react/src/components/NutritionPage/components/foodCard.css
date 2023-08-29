@@ -1,0 +1,47 @@
+/*----------------------------------------------------------------------------*/
+.food-nutrition-infos .card {
+  width: 270px;
+}
+
+.card-title {
+  margin: var(--margin-card-top) var(--margin-card-left-right)
+    var(--margin-card-bottom);
+
+  font-family: "Title";
+  font-size: var(--header-text-font-size);
+  line-height: 1.5 * var(--header-text-font-size);
+
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: right;
+
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+}
+
+/*----------------------------------------------------------------------------*/
+.table {
+  margin: 0 1rem;
+  border-radius: var(--border-radius);
+}
+
+.text-col {
+  text-align: left;
+}
+
+.number-col {
+  text-align: right;
+}
+
+/*----------------------------------------------------------------------------*/
+.select-button {
+  color: var(--gray-0);
+  background: var(--signature-color-light);
+}
+
+.select-button.selected {
+  color: var(--gray-0);
+  background: var(--green-4);
+}

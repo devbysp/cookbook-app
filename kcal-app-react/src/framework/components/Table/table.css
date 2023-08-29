@@ -1,0 +1,30 @@
+.table {
+  width: 100%;
+
+  text-align: left;
+  font-family: "Normal";
+  font-size: 1.5rem;
+
+  background: white;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.table-header {
+  font-size: 1.8rem;
+}
+
+.table-data-cell,
+.table-head-cell {
+  color: var(--gray-7);
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+}
+
+.table-header.table-head-cell {
+  color: var(--table-header-text-color);
+  background: var(--table-header-bg-color);
+}
+
+.table-body.table-head-cell {
+  color: var(--text-color);
+}

@@ -1,0 +1,73 @@
+@import url("../../css/common.css");
+
+/* -------------------------------------------------------------------------- *
+ *                                    Toaster
+ * -------------------------------------------------------------------------- */
+.toaster {
+  --toaster-min-width: 20rem;
+  --toaster-max-width: 80rem;
+  --toaster-max-height: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+  margin: 0;
+  width: 100%;
+  min-width: var(--toaster-min-width);
+  max-width: var(--toaster-max-width);
+  height: fit-content;
+  max-height: var(--toaster-max-height);
+
+  position: fixed;
+  top: var(--padding-top-bottom);
+  left: calc(50% - var(--toaster-max-width) / 2);
+
+  background: transparent;
+
+  /* Hide scrollbar */
+  overflow-y: auto;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.toaster::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.toaster:not(.show) {
+  /* Hide scrollbar */
+  display: none;
+}
+
+/* --------------------------------- Toast ---------------------------------- */
+.toast {
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: min-content;
+  grid-column-gap: var(--margin-top-bottom);
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+
+  font-family: "Normal";
+  font-size: var(--text-font-size);
+  line-height: 1.5 * var(--text-font-size);
+
+  color: var(--text-color);
+  background: var(--header-bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.toast:hover {
+}
+
+.toast.success {
+  color: var(--text-color);
+  background: var(--green-1);
+}

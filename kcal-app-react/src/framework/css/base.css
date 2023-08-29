@@ -1,0 +1,171 @@
+@font-face {
+  font-family: "Title";
+  src: url("../fonts/Roboto/Roboto-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Normal";
+  src: url("../fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Navbar Title";
+  src: url("../fonts/Roboto/Roboto-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Brand";
+  src: url("../fonts/Mogra/Mogra-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Footer";
+  src: url("../fonts/WorkSans/WorkSans-VariableFont_wght.ttf")
+    format("truetype");
+}
+
+/* -------------------------------------------------------------------------- *
+ *                                  Global 
+ * -------------------------------------------------------------------------- */
+:root {
+  /*----------------------------- Color theme --------------------------------*/
+  --gray-0: #f2f2f2;
+  --gray-1: #e6e6e6;
+  --gray-2: gainsboro;
+  --gray-3: lightgray;
+  --gray-4: silver;
+  --gray-5: darkgray;
+  --gray-6: gray;
+  --gray-7: dimgray;
+  --gray-8: #3d3a38;
+  --gray-9: #040404;
+
+  --signature-color: #1d2133;
+  --signature-color-light: #5a6284;
+  --complementary-color: #332912;
+
+  /*------------------------------ Generated ---------------------------------*
+   *
+   *   Palette URL: http://paletton.com/#uid=c3z1T5C2O0kgmrO9c++e5HdnVmOJpl7 
+   *
+   *--------------------------------------------------------------------------*/
+  --blue-0: #4b6f8f;
+  --blue-1: #bbdfff;
+  --blue-2: #76a1c7;
+  --blue-3: #244f76;
+  --blue-4: #043b6d;
+
+  --red-0: #dc6b6e;
+  --red-1: #ffb6b8;
+  --red-2: #fe8e91;
+  --red-3: #b42e31;
+  --red-4: #a70004;
+
+  --green-0: #5cb358;
+  --green-1: #b9ffb6;
+  --green-2: #83e17e;
+  --green-3: #2b9325;
+  --green-4: #078800;
+
+  --yellow-0: #dede6c;
+  --yellow-1: #ffffb6;
+  --yellow-2: #ffff8f;
+  --yellow-3: #b6b62e;
+  --yellow-4: #a8a800;
+
+  --rgba-blue-0: rgba(75, 111, 143, 1);
+  --rgba-blue-1: rgba(187, 223, 255, 1);
+  --rgba-blue-2: rgba(118, 161, 199, 1);
+  --rgba-blue-3: rgba(36, 79, 118, 1);
+  --rgba-blue-4: rgba(4, 59, 109, 1);
+
+  --rgba-red-0: rgba(220, 107, 110, 1);
+  --rgba-red-1: rgba(255, 182, 184, 1);
+  --rgba-red-2: rgba(254, 142, 145, 1);
+  --rgba-red-3: rgba(180, 46, 49, 1);
+  --rgba-red-4: rgba(167, 0, 4, 1);
+
+  --rgba-green-0: rgba(92, 179, 88, 1);
+  --rgba-green-1: rgba(185, 255, 182, 1);
+  --rgba-green-2: rgba(131, 225, 126, 1);
+  --rgba-green-3: rgba(43, 147, 37, 1);
+  --rgba-green-4: rgba(7, 136, 0, 1);
+
+  --rgba-yellow-0: rgba(222, 222, 108, 1);
+  --rgba-yellow-1: rgba(255, 255, 182, 1);
+  --rgba-yellow-2: rgba(255, 255, 143, 1);
+  --rgba-yellow-3: rgba(182, 182, 46, 1);
+  --rgba-yellow-4: rgba(168, 168, 0, 1);
+
+  /*------------------------------- Font size --------------------------------*/
+  --base-unit: 10px;
+
+  --h1-font-size: 4rem;
+  --h2-font-size: 3.2rem;
+  --h3-font-size: 2.8rem;
+  --h4-font-size: 2.4rem;
+
+  --p-font-size: 2rem;
+  --sp-font-size: 2rem;
+}
+
+/* -------------------------------------------------------------------------- *
+ *                                   Reset  
+ * -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  font-family: "Normal", sans-serif;
+  font-weight: 400;
+  font-size: var(--base-unit);
+}
+
+h1 {
+  margin-top: var(--h1-font-size);
+  font-family: "Title", serif;
+  font-weight: 900;
+  font-size: var(--h1-font-size);
+  line-height: var(--h1-font-size);
+}
+
+h2 {
+  margin-top: var(--h2-font-size);
+  font-family: "Title", serif;
+  font-weight: 700;
+  font-size: var(--h2-font-size);
+  line-height: var(--h2-font-size);
+}
+
+h3 {
+  margin-top: var(--h3-font-size);
+  font-family: "Title", serif;
+  font-weight: 700;
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-font-size);
+}
+
+h4 {
+  margin-top: var(--h4-font-size);
+  font-family: "Title", serif;
+  font-weight: 500;
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-font-size);
+}
+
+p {
+  margin-top: var(--p-font-size);
+  font-size: var(--p-font-size);
+  line-height: var(--p-font-size);
+}
+
+span {
+  margin-top: var(--sp-font-size);
+  font-size: var(--sp-font-size);
+  line-height: var(--sp-font-size);
+}

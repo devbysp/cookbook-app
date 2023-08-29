@@ -1,0 +1,62 @@
+@import url("../../css/common.css");
+
+/* -------------------------------------------------------------------------- *
+ *                                   Button 
+ * -------------------------------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+  margin: var(--margin-top-bottom) var(--margin-left-right);
+
+  font-size: var(--text-font-size);
+  line-height: calc(1.5 * var(--text-font-size));
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+
+  color: var(--text-color);
+  background: var(--button-bg-color);
+
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+}
+
+.button:hover {
+  filter: brightness(95%);
+}
+
+.button:hover:active {
+  filter: brightness(90%);
+}
+
+.button.float {
+  box-shadow: var(--shadow-sm);
+}
+
+.button.float:hover {
+  box-shadow: var(--shadow);
+}
+
+/*------------------------ Sematic colors for buttons ------------------------*/
+.button.primary {
+  --text-color: var(--gray-0);
+  --button-bg-color: var(--signature-color);
+}
+
+.button.secondary {
+  --text-color: var(--gray-0);
+  --button-bg-color: var(--green-4);
+}
+
+.button.danger {
+  --text-color: var(--gray-0);
+  --button-bg-color: var(--red-4);
+}

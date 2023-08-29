@@ -1,0 +1,35 @@
+.nutrition-page {
+  margin-top: 6rem;
+  padding-bottom: 4rem;
+  background: var(--gray-1);
+}
+
+.food-nutrition-infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+
+  min-height: calc(100vh - 12rem);
+  max-height: calc(100vh - 16rem);
+  padding: 4rem;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+
+  background: var(--gray-3);
+  overflow-y: auto;
+}
+
+.food-nutrition-infos::-webkit-scrollbar {
+  /* hide scrollbar */
+  display: none; /* Safari and Chrome */
+}
+
+.food-nutrition-infos-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  padding: 1rem;
+  background: var(--gray-3);
+}

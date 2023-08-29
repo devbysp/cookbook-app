@@ -1,0 +1,106 @@
+@import url("./base");
+
+/* -------------------------------------------------------------------------- *
+ *                           Components related globals
+ * -------------------------------------------------------------------------- */
+:root {
+  /*-------------------------------- Colors ----------------------------------*/
+  --text-color: var(--gray-8);
+  --label-color: var(--gray-7);
+
+  --symbol-color: var(--gray-6);
+  --border-color: var(--gray-3);
+
+  --button-text-color: var(--text-color);
+  --button-bg-color: var(--gray-3);
+
+  --close-button-text-color: var(--gray-2);
+  --close-button-bg-color: var(--red-4);
+
+  --card-text-color: var(--signature-color-light);
+  --card-bg-color: var(--gray-0);
+
+  --header-text-color: var(--gray-0);
+  --header-bg-color: var(--signature-color-light);
+  --dialog-bg-color: var(--gray-1);
+
+  --navbar-text-color: var(--gray-4);
+  --navbar-bg-color: var(--signature-color);
+
+  --table-header-text-color: var(--gray-1);
+  --table-header-bg-color: var(--signature-color-light);
+
+  --toast-text-color: var(--text-color);
+  --toast-bg-color: var(--gray-1);
+
+  /*---------------------------------- Font ----------------------------------*/
+  --text-font-size: 1.8rem;
+  --label-font-size: 1.8rem;
+  --navitem-font-size: 1.8rem;
+  --message-font-size: 1.4rem;
+  --header-text-font-size: 2.5rem;
+  --brand-text-font-size: 2.5rem;
+
+  /*--------------------------------- Spacing --------------------------------*/
+  --margin-top-bottom: 0.75rem;
+  --margin-left-right: 0.75rem;
+  --padding-top-bottom: 0.75rem;
+  --padding-left-right: 1.5rem;
+  --border-radius: 0.5rem;
+  --margin-card-top: 2rem;
+  --margin-card-left-right: 1.2rem;
+  --margin-card-bottom: 1rem;
+
+  /*--------------------------------- Shadow ---------------------------------*/
+  --shadow-color: 0deg 0% 50%;
+  --shadow-sm: hsl(var(--shadow-color)) 0px 1px 2px 0px;
+  --shadow: hsl(var(--shadow-color)) 0px 2px 4px 1px;
+  --shadow-lg: hsl(var(--shadow-color)) 1px 4px 16px 2px;
+}
+
+/* -------------------------------------------------------------------------- *
+ *                              Semantic sizes   
+ * -------------------------------------------------------------------------- */
+.xs {
+  --text-font-size: 1.4rem;
+  --label-font-size: 1.4rem;
+  --navitem-font-size: 1.4rem;
+
+  --margin-top-bottom: 0.2rem;
+  --margin-left-right: 0.2rem;
+  --padding-top-bottom: 0.2rem;
+  --padding-left-right: 0.8rem;
+}
+
+.sm {
+  --text-font-size: 1.6rem;
+  --label-font-size: 1.6rem;
+  --navitem-font-size: 1.6rem;
+
+  --margin-top-bottom: 0.5rem;
+  --margin-left-right: 0.5rem;
+  --padding-top-bottom: 0.5rem;
+  --padding-left-right: 1rem;
+}
+
+.lg {
+  --text-font-size: 2.2rem;
+  --label-font-size: 2.2rem;
+  --navitem-font-size: 2.2rem;
+
+  --margin-top-bottom: 0.85rem;
+  --margin-left-right: 0.85rem;
+  --padding-top-bottom: 0.85rem;
+  --padding-left-right: 1.7rem;
+}
+
+.xl {
+  --text-font-size: 2.5rem;
+  --label-font-size: 2.5rem;
+  --navitem-font-size: 2.5rem;
+
+  --margin-top-bottom: 1rem;
+  --margin-left-right: 1rem;
+  --padding-top-bottom: 1rem;
+  --padding-left-right: 2rem;
+}

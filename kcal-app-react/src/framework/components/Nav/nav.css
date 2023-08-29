@@ -1,0 +1,50 @@
+@import url("../../css/common.css");
+
+/* -------------------------------------------------------------------------- *
+ *                                    Nav  
+ * -------------------------------------------------------------------------- */
+
+/*------------------------------ Nav item list -------------------------------*/
+.nav-item-list {
+  display: flex;
+  /* display items in a column */
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .nav-item-list {
+    /* above the break point display items in a row */
+    flex-direction: row;
+  }
+}
+
+/*------------------------------- Collapsible --------------------------------*/
+@media (max-width: 992px) {
+  .collapsible {
+    flex-basis: 100%; /* forces new line */
+    flex-grow: 1; /* forces menu item to the left */
+  }
+}
+
+@media (max-width: 992px) {
+  .collapsible:not(.show) {
+    /* below the breakpoint show menu only when the class "show" is available */
+    display: none;
+  }
+  .nav-item {
+    text-align: start;
+    justify-content: flex-start;
+  }
+}
+
+/*----------------------------------- Nav ------------------------------------*/
+.nav {
+  background: var(--navbar-bg-color);
+}
+
+@media (min-width: 992px) {
+  .nav {
+    display: flex;
+    flex-basis: auto; /* menu & brand fits in one line */
+  }
+}

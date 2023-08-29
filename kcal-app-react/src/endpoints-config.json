@@ -1,0 +1,32 @@
+{
+	"endpoints": {
+		"food": "${baseUrl}/food"
+	},
+	"urls": {
+		"baseUrl": "${envBaseUrl}/kcal-app",
+		"envBaseUrl": "${localhost}"
+	},
+	"environments": [
+		{
+			"when": {
+				"serverNameMatch": "devbysp.github.io"
+			},
+			"urls": {
+				"envBaseUrl": "${docker}"
+			}
+		},
+		{
+			"when": {
+				"serverNameMatch": "devbysp.ro"
+			},
+			"urls": {
+				"envBaseUrl": "${docker}"
+			}
+		}
+	],
+	"servers": {
+		"localhost": "https://localhost:4000",
+		"docker": "https://devbysp.ro",
+		"codesandbox": "https://42xrl2-4000.csb.app"
+	}
+}

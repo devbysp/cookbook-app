@@ -1,0 +1,70 @@
+@import url("../../css/common.css");
+
+/* -------------------------------------------------------------------------- *
+ *                                  NavItem
+ * -------------------------------------------------------------------------- */
+.nav-item {
+  font-size: var(--navitem-font-size);
+  background: var(--navbar-bg-color);
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-item.button.float {
+  box-shadow: none;
+}
+
+.nav-item.button.float:hover:not(.selected) {
+  box-shadow: var(--shadow);
+}
+
+/*-------------------------------- Navigation link ---------------------------*/
+.nav-link {
+  display: block;
+  width: 100%;
+
+  color: var(--navbar-text-color);
+  text-decoration: none;
+}
+
+/*--------------------------------- Selected ---------------------------------*/
+.nav-item.selected {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--gray-8);
+}
+.button.primary.selected {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--signature-color);
+}
+
+.button.secondary.selected {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--green-4);
+}
+
+.button.danger.selected {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--red-4);
+}
+
+/*---------------------------------- Hover -----------------------------------*/
+.nav-item:hover:not(.selected) {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--signature-color-light);
+}
+
+.button.primary:hover {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--signature-color);
+}
+
+.button.secondary:hover {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--green-4);
+}
+
+.button.danger:hover {
+  --navbar-text-color: var(--gray-0);
+  --navbar-bg-color: var(--red-4);
+}

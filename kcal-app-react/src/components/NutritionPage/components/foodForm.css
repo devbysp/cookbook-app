@@ -1,0 +1,5 @@
+.newfood-form-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 58rem;
+}

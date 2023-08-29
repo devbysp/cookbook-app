@@ -1,0 +1,23 @@
+.card {
+  width: fit-content;
+  height: fit-content;
+
+  color: var(--card-text-color);
+  background: var(--card-bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card-footer {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
