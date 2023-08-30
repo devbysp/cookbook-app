@@ -18,7 +18,4 @@ RUN mkdir db
 # Boundle app sources
 COPY . .
 
-# Expose the port on which the app listens
-EXPOSE 4000
-
 CMD ["node", "src/index.js"]
