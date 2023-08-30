@@ -1,4 +1,4 @@
-FROM node:16.14.2-alpine
+FROM nginx:1.25.2-alpine-slim
 
 ARG BASE_PATH
 
