@@ -1,4 +1,7 @@
 FROM nginx:1.25.2-alpine-slim
 
-WORKDIR /react-app/
-COPY build/ /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+COPY build .
+
+# Containers run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
