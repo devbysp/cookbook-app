@@ -4,16 +4,19 @@ services:
     image: 'devbysp/kcal-app-backend:${TAG}'
     build:
       context: kcal-app-express
+    environment:
+      - PORT = '4000'
+      - ENABLE_CORS = true
     ports:
       - "4000"
-    environment:
-      - ENABLE_CORS = true
     volumes:
       - ./db:/usr/src/kcal-app/db:rw
   frontend:
     image: 'devbysp/kcal-app-frontend:${TAG}'
     build:
       context: kcal-app-react
+    environment:
+      - PORT = '3000'
     ports:
       - "3000"
   nginx:
