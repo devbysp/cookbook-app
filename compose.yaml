@@ -15,7 +15,7 @@ services:
     image: 'devbysp/kcal-app-frontend:${TAG}'
     build:
       context: kcal-app-react
-    environment:
+    args:
       - BASE_PATH=${FRONTEND_PATH}
     ports:
       - "80"
