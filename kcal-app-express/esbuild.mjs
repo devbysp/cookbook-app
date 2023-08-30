@@ -5,6 +5,7 @@ await esbuild.build({
   bundle: true,
   minify: true,
   platform: 'node',
-  external: ['nock', 'aws-sdk', 'mock-aws-s3', '@mapbox/node-pre-gyp'],
+  external: ['nock', 'aws-sdk', 'mock-aws-s3'],
   outfile: 'build/index.js',
+  loader: { '.html': 'text' },
 });
