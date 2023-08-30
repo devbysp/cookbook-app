@@ -3,7 +3,9 @@ FROM node:16.14.2-alpine
 # Create app directory
 WORKDIR /usr/src
 
-# Boundle app sources
-COPY build/index.js .
+COPY package.json package.json
 
-CMD ["node", "index.js"]
+# Boundle app sources
+COPY build/index.js kcal-app/index.js
+
+CMD ["node", "kcal-app/index.js"]
