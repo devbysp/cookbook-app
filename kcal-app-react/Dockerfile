@@ -1,6 +1,6 @@
-FROM nginx:1.25.2-alpine-slim
+FROM node:16.14.2-alpine
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html/${BASE_PATH}
 COPY build .
 
 # Containers run nginx with global directives and daemon off
