@@ -15,10 +15,8 @@ services:
     image: 'devbysp/kcal-app-frontend:${TAG}'
     build:
       context: kcal-app-react
-    environment:
-      - PORT=3000
     ports:
-      - "3000"
+      - "80"
   nginx:
     image: nginx:1.25.2-alpine-slim
     volumes:
