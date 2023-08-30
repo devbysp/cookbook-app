@@ -4,6 +4,6 @@ FROM node:16.14.2-alpine
 WORKDIR /usr/src/kcal-app
 
 # Boundle app sources
-COPY build .
+COPY build/index.js .
 
-CMD ["node", "build/index.js"]
+CMD ["node", "index.js"]
