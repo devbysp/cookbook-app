@@ -16,7 +16,7 @@ services:
     build:
       context: kcal-app-react
     args:
-      - BASE_PATH=${FRONTEND_PATH}
+      BASE_PATH=${FRONTEND_PATH}
     ports:
       - "80"
   nginx:
