@@ -1,35 +1,36 @@
-const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
+const nodeExternals = () => ['rimraf', 'lru-cache', 'nock', 'p-map', 'aws-sdk',
+  'mock-aws-s3', 'supports-color', 'npm', 'yallist', 'bluebird'];
 
-const nodeModules = {};
-
-// note the path.resolve(__dirname, ...) part
-// without it, eslint-import-resolver-webpack fails
-// since eslint might be invoked with different cwd
-fs.readdirSync(path.resolve(__dirname, 'node_modules'))
-  .filter((x) => ['.bin'].indexOf(x) === -1)
-  .forEach((mod) => { nodeModules[mod] = `commonjs ${mod}`; });
+const {
+  NODE_ENV = 'production',
+} = process.env;
 
 module.exports = {
-  name: 'kcal-app-backend',
-  target: 'node',
-  mode: 'production',
   entry: './src/index.js',
+  mode: NODE_ENV,
+  target: 'node',
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
   },
-  externals: nodeModules,
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: ['babel-loader'],
+        test: /\.cs$/,
+        use: 'ignore-loader',
       },
-      { test: /\.json$/, use: 'json-loader' },
+      {
+        test: /\.html$/,
+        use: 'ignore-loader',
+      },
     ],
   },
-  plugins: [new CleanWebpackPlugin()],
+  resolve: {
+    extensions: ['.js'],
+    modules: [path.resolve('./node_modules'), path.resolve('./src')],
+  },
+  externals: nodeExternals(),
+  watch: NODE_ENV === 'development',
 };
