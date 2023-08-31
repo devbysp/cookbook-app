@@ -1,9 +1,14 @@
 node_modules
+build
+src
 db
 
 .dockerignore
+.eslintrc.json
 .gitignore
 
 Dockerfile
+package*.json
+
 
 *.log
