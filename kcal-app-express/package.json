@@ -6,7 +6,8 @@
   "scripts": {
     "prestart": "mkdirp ../db",
     "start": "cross-env PORT=4000 cross-env BASE_PATH=kcal-app cross-env DB=../db/food.db node src/index.js",
-    "build": "webpack"
+    "prebuild": "rimraf --glob 'build'",
+    "build": "node esbuild.config.mjs"
   },
   "author": "Magyari Zoltán",
   "license": "ISC",
@@ -21,12 +22,15 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "esbuild": "^0.19.2",
+    "esbuild-plugin-babel": "^0.2.3",
     "eslint": "^8.47.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-promise": "^6.1.1",
-    "mkdirp": "^3.0.1"
+    "mkdirp": "^3.0.1",
+    "rimraf": "^5.0.1"
   }
 }
