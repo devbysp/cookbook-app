@@ -6,8 +6,11 @@ esbuild.build({
   platform: 'node',
   bundle: true,
   outfile: 'build/bundle.js',
+  loader: { '.html': 'text' },
+  external: ['mock-aws-s3', 'aws-sdk', 'nock', 'node-pre-gyp'],
   plugins: [
     babel({
+      filter: /.*js$/,
       presets: ['es2015'],
     }),
   ],
