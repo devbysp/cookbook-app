@@ -11,6 +11,7 @@ base.plugins = [
       cors: 'cors',
       sqlite3: 'sqlite3',
       winston: 'winston',
+      express: 'express',
     },
   ),
 ];

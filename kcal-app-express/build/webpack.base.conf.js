@@ -11,5 +11,4 @@ module.exports = {
     filename: 'app.js',
     path: resolve(__dirname, './../dist'),
   },
-  externals: { sqlite3: 'commonjs sqlite3' },
 };
