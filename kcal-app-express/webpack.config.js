@@ -1,36 +1,65 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
-const nodeExternals = () => ['rimraf', 'lru-cache', 'nock', 'p-map', 'aws-sdk',
-  'mock-aws-s3', 'supports-color', 'npm', 'yallist', 'bluebird'];
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
-const {
-  NODE_ENV = 'production',
-} = process.env;
+const isProduction = process.env.NODE_ENV === 'production';
 
-module.exports = {
+const config = {
   entry: './src/index.js',
-  mode: NODE_ENV,
-  target: 'node',
   output: {
-    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
+    path: path.resolve(__dirname, 'build'),
+    clean: true,
   },
+  devServer: {
+    open: true,
+    host: 'localhost',
+  },
+  plugins: [
+    // Add your plugins here
+    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new NodePolyfillPlugin(),
+  ],
   module: {
     rules: [
       {
-        test: /\.cs$/,
-        use: 'ignore-loader',
+        test: /index.html$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'index.html',
+        },
       },
       {
-        test: /\.html$/,
-        use: 'ignore-loader',
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+      {
+        test: /\.cs$/i,
+        loader: 'raw-loader',
       },
     ],
   },
   resolve: {
-    extensions: ['.js'],
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
+    fallback: {
+      fs: false,
+      net: false,
+      tls: false,
+      dns: false,
+      child_process: false,
+      nock: false,
+      'aws-sdk': false,
+      'mock-aws-s3': false,
+      asyn_hooks: false,
+      bluebird: false,
+      npm: false,
+    },
   },
-  externals: nodeExternals(),
-  watch: NODE_ENV === 'development',
+};
+
+module.exports = () => {
+  if (isProduction) {
+    config.mode = 'production';
+  } else {
+    config.mode = 'development';
+  }
+  return config;
 };

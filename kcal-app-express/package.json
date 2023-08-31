@@ -1,37 +1,29 @@
 {
   "name": "kcal-app-backend",
   "version": "2.0.0",
-  "description": "backend for kcal-app-react",
-  "main": "src/index.js",
+  "description": "Backend for kcal-app-react",
   "scripts": {
     "prestart": "mkdirp ../db",
     "start": "cross-env PORT=4000 cross-env BASE_PATH=kcal-app cross-env DB=../db/food.db node src/index.js",
-    "build": "webpack"
+    "build": "cross-env NODE_OPTIONS='--openssl-legacy-provider' webpack --config build/webpack.prod.conf.js"
   },
   "author": "Magyari Zoltán",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "cors": "^2.8.5",
     "sqlite3": "^5.1.6",
-    "winston": "^3.10.0"
+    "winston": "^3.10.0",
+    "webpack": "^4.39.1"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "@types/node": "^20.5.6",
+    "mkdirp": "^3.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.47.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-promise": "^6.1.1",
-    "ignore-loader": "^0.1.2",
-    "mkdirp": "^3.0.1",
-    "path": "^0.12.7",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-node-externals": "^3.0.0"
+    "eslint-config-airbnb-base": "^15.0.0",
+    "webpack-cli": "^3.3.6"
   }
 }
