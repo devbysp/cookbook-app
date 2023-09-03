@@ -9,9 +9,7 @@ base.plugins = [
     resolve(__dirname, '../node_modules'),
     {
       cors: 'cors',
-      sqlite3: 'sqlite3',
       winston: 'winston',
-      express: 'express',
     },
   ),
 ];

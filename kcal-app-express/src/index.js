@@ -1,54 +1,61 @@
 const express = require('express');
-const sqlite3 = require('sqlite3');
 const cors = require('cors');
-const logger = require('./logger');
+const logger = require('./frameworks/logger/logger');
 
+const db = require('./database/data-access-layer');
 const { withSlash } = require('./helpers/utils');
 const { validateNewFood } = require('./helpers/validation');
-const { createFoodTable } = require('./database/migration');
-const { getAllFoods, addNewFood, deleteFood } = require('./database/database');
+const { createTechnicalException } = require('./frameworks/database/db-utils');
 
-const app = express();
-const port = process.env.PORT || 8080;
-const basePath = withSlash(process.env.BASE_PATH || 'kcal-app');
-const db = new sqlite3.Database(process.env.DB || 'db/food.db');
+const server = express();
+const port = process.env.BACKEND_PORT;
+const basePath = withSlash(process.env.BACKEND_BASE_PATH);
 
 /* -------------------------------------------------------------------------- *
  * Application configurations
  * -------------------------------------------------------------------------- */
-app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+server.use(cors());
+server.use(express.urlencoded({ extended: true }));
+server.use(express.json());
 
 /* -------------------------------------------------------------------------- *
  * Application init
  * -------------------------------------------------------------------------- */
-app.listen(port, () => {
+server.listen(port, () => {
   logger.info(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
-  createFoodTable(db);
+  db.createFoodTable()
+    .catch((error) => {
+      throw createTechnicalException('Unexpected error occured. Server listening stops!', error);
+    });
 });
 
 /* -------------------------------------------------------------------------- *
  * API endpoints
  * -------------------------------------------------------------------------- */
-app.get(`${basePath}/food`, (req, res) => {
+server.get(`${basePath}/food`, (req, res) => {
   logger.debug(`GET ${req.url}`);
-  getAllFoods(res, db);
+
+  db.getAllFoods()
+    .then((result) => res.send(result))
+    .catch((error) => res.status(500).send(error));
 });
 
-app.post(`${basePath}/food`, (req, res) => {
+server.post(`${basePath}/food`, (req, res) => {
   logger.debug(`POST ${req.url} ${req.body}`);
-  validateNewFood(
-    req.body,
-    () => addNewFood(res, db, req.body),
-    (message) => {
-      logger.info({ message });
-      res.status(400).send(message);
-    },
-  );
+
+  validateNewFood(req.body)
+    .then((food) => {
+      db.addNewFood(res, food);
+      res.send();
+    })
+    .catch((error) => {
+      res.status(400).send(error);
+    });
 });
 
-app.delete(`${basePath}/food/:id`, (req, res) => {
+server.delete(`${basePath}/food/:id`, (req, res) => {
   logger.debug(`DELETE ${req.url}`);
-  deleteFood(res, db, req.params.id);
+
+  db.deleteFood(req.params.id)
+    .then(() => res.send());
 });

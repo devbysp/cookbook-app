@@ -1,7 +1,9 @@
 node_modules
+certs
 dist
 db
 
 package-lock.json
+.local.env
 *.log
 *.db
