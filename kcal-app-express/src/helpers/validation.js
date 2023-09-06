@@ -1,4 +1,4 @@
-const { createBusinessException } = require('../frameworks/database/db-utils');
+const { createBusinessException } = require('./utils');
 
 async function validateNewFood(food) {
   const requiredProps = ['foodName', 'kcal', 'fat', 'saturatedFat', 'carbs', 'sugar', 'fiber', 'protein'];

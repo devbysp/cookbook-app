@@ -1,6 +1,6 @@
-const db = require('../frameworks/database/mysql-adapter');
-const logger = require('../frameworks/logger/logger');
-const { createTechnicalException } = require('../frameworks/database/db-utils');
+const db = require('../mysql-adapter');
+const logger = require('../../helpers/logger/logger');
+const { createTechnicalException } = require('../../helpers/utils');
 
 /* -------------------------------------------------------------------------- *
  * Migration queries

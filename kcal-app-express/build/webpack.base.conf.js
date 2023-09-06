@@ -10,5 +10,6 @@ module.exports = {
   output: {
     filename: 'app.js',
     path: resolve(__dirname, './../dist'),
+    clean: true,
   },
 };

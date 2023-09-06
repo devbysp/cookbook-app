@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const logger = require('./frameworks/logger/logger');
+const logger = require('./helpers/logger/logger');
 
 const db = require('./database/data-access-layer');
 const { withSlash } = require('./helpers/utils');
 const { validateNewFood } = require('./helpers/validation');
-const { createTechnicalException } = require('./frameworks/database/db-utils');
+const { createTechnicalException } = require('./helpers/utils');
 
 const server = express();
 const port = process.env.BACKEND_PORT;

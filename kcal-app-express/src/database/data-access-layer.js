@@ -1,11 +1,9 @@
-const { createTechnicalException } = require('../frameworks/database/db-utils');
-const db = require('../frameworks/database/mysql-adapter');
+const { createTechnicalException } = require('../helpers/utils');
+const db = require('./mysql-adapter');
 
-const migration = require('../migration/2023_09_03_create_food_table');
+const migration = require('./migration/2023_09_03_create_food_table');
 const sql = require('./queries');
 
-// TODO: This method will be turned into a general migration method. Insted of
-//       just creating a table it will execute all kind of migration method.
 async function createFoodTable() {
   return migration.createFoodTable();
 }

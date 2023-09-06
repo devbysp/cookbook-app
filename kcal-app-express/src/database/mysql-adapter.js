@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mysql = require('mysql');
-const logger = require('../logger/logger');
-const { createTechnicalException } = require('./db-utils');
+const logger = require('../helpers/logger/logger');
+const { createTechnicalException } = require('../helpers/utils');
 
 // Two calls to query(sql) may use two different connections and run in parallel
 const pool = mysql.createPool({
@@ -12,7 +12,7 @@ const pool = mysql.createPool({
   password: process.env.DATABASE_PASSWD,
   database: process.env.DATABASE_NAME,
   ssl: {
-    ca: fs.readFileSync(`${__dirname}/../../../certs/portfolio-db-ca-certificate.crt`),
+    ca: fs.readFileSync(`${__dirname}/certs/portfolio-db-ca-certificate.crt`),
   },
 });
 

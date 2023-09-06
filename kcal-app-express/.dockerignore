@@ -9,6 +9,6 @@ db
 
 Dockerfile
 package*.json
-webpack.config.js
 
 *.log
+.*env
