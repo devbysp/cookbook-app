@@ -29,12 +29,14 @@ async function query(sql, params) {
     pool.getConnection((connectionError, connection) => {
       if (connectionError) {
         reject(createTechnicalException('Error getting a connection from connection pool.', connectionError));
+        return;
       }
 
       connection.query(sql, params, (error, records, fields) => {
         connection.release();
         if (error) {
           reject(createTechnicalException(`Error executing query. '${sql}'`, error));
+          return;
         }
 
         logger.debug(`SQL was executed successfully: '${sql}'`);

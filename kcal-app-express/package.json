@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Backend for kcal-app-react",
   "scripts": {
-    "start": "cross-env DOTENV_CONFIG_PATH=.env-local node -r dotenv/config src/index.js",
+    "start": "cross-env DOTENV_CONFIG_PATH=env/localenv node -r dotenv/config src/index.js",
     "build": "webpack --config build/webpack.prod.conf.js"
   },
   "author": "Magyari Zoltán",
