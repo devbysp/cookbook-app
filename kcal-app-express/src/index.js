@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const terminate = require('./helpers/terminate');
 const logger = require('./helpers/logger/logger');
 
 const db = require('./database/data-access-layer');
@@ -7,32 +8,45 @@ const { withSlash } = require('./helpers/utils');
 const { validateNewFood } = require('./helpers/validation');
 const { createTechnicalException } = require('./helpers/utils');
 
-const server = express();
+const app = express();
 const port = process.env.BACKEND_PORT;
 const basePath = withSlash(process.env.BACKEND_BASE_PATH);
 
 /* -------------------------------------------------------------------------- *
  * Application configurations
  * -------------------------------------------------------------------------- */
-server.use(cors());
-server.use(express.urlencoded({ extended: true }));
-server.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 /* -------------------------------------------------------------------------- *
  * Application init
  * -------------------------------------------------------------------------- */
-server.listen(port, () => {
+const server = app.listen(port, () => {
   logger.info(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
   db.createFoodTable()
     .catch((error) => {
-      throw createTechnicalException('Unexpected error occured. Server listening stops!', error);
+      throw createTechnicalException('Unexpected error occured', error);
     });
 });
 
 /* -------------------------------------------------------------------------- *
+ * Error handling
+ * -------------------------------------------------------------------------- */
+const exitHandler = terminate(server, {
+  coredump: false,
+  timeout: 500,
+});
+
+process.on('uncaughtException', exitHandler(1, 'Unexpected Error'));
+process.on('unhandledRejection', exitHandler(1, 'Unhandled Promise'));
+process.on('SIGTERM', exitHandler(0, 'SIGTERM'));
+process.on('SIGINT', exitHandler(0, 'SIGINT'));
+
+/* -------------------------------------------------------------------------- *
  * API endpoints
  * -------------------------------------------------------------------------- */
-server.get(`${basePath}/food`, (req, res) => {
+app.get(`${basePath}/food`, (req, res) => {
   logger.debug(`GET ${req.url}`);
 
   db.getAllFoods()
@@ -40,7 +54,7 @@ server.get(`${basePath}/food`, (req, res) => {
     .catch((error) => res.status(500).send(error));
 });
 
-server.post(`${basePath}/food`, (req, res) => {
+app.post(`${basePath}/food`, (req, res) => {
   logger.debug(`POST ${req.url} ${req.body}`);
 
   validateNewFood(req.body)
@@ -53,7 +67,7 @@ server.post(`${basePath}/food`, (req, res) => {
     });
 });
 
-server.delete(`${basePath}/food/:id`, (req, res) => {
+app.delete(`${basePath}/food/:id`, (req, res) => {
   logger.debug(`DELETE ${req.url}`);
 
   db.deleteFood(req.params.id)
