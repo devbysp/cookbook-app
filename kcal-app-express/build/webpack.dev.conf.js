@@ -1,18 +1,18 @@
+const webpack = require('webpack'); // eslint-disable-line import/no-extraneous-dependencies
 const CopyPlugin = require('copy-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
+const { resolve } = require('path');
 const base = require('./webpack.base.conf');
 
 base.mode = 'development';
-base.externals = [
-  (_context, request, callback) => {
-    if (request[0] === '.') {
-      callback();
-    } else {
-      callback(null, `require('${request}')`);
-    }
-  },
-];
-
 base.plugins = [
+  new webpack.ContextReplacementPlugin(
+    /express\/lib/,
+    resolve(__dirname, '../node_modules'),
+    {
+      cors: 'cors',
+      winston: 'winston',
+    },
+  ),
   new CopyPlugin({
     patterns: [
       { context: 'src/database', from: 'certs', to: 'certs' },
@@ -22,5 +22,8 @@ base.plugins = [
     ],
   }),
 ];
+base.stats = {
+  warningsFilter: /require\.extensions/,
+};
 
 module.exports = base;
