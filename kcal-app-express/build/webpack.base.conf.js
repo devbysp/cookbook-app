@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const TerserPlugin = require('terser-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
   target: 'node',
@@ -16,6 +17,14 @@ module.exports = {
   // the mysql module that serverless-mysql is using is not compatible with
   // minimising.
   optimization: {
-    minimize: false,
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          keep_classnames: true,
+          keep_fnames: true,
+        },
+      }),
+    ],
   },
 };

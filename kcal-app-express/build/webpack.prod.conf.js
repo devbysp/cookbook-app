@@ -1,5 +1,6 @@
 const webpack = require('webpack'); // eslint-disable-line import/no-extraneous-dependencies
 const CopyPlugin = require('copy-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
+
 const { resolve } = require('path');
 const base = require('./webpack.base.conf');
 
