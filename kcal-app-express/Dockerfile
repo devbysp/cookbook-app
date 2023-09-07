@@ -7,7 +7,7 @@ WORKDIR /usr/src/kcal-app
 COPY dist/app.js* .
 
 # Copy certificates
-COPY dist/certs .
+COPY dist/certs ./certs
 
 # Create mount folder for database
 RUN mkdir db
