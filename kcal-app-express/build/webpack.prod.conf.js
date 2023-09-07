@@ -1,5 +1,5 @@
-const webpack = require('webpack');
-const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack'); // eslint-disable-line import/no-extraneous-dependencies
+const CopyPlugin = require('copy-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 const { resolve } = require('path');
 const base = require('./webpack.base.conf');
 
@@ -16,6 +16,9 @@ base.plugins = [
   new CopyPlugin({
     patterns: [
       { context: 'src/database', from: 'certs', to: 'certs' },
+      {
+        context: 'env', from: 'localenv', to: '.env', toType: 'file',
+      },
     ],
   }),
 ];
