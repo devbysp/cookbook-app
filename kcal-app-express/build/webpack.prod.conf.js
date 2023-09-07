@@ -17,7 +17,7 @@ base.plugins = [
     patterns: [
       { context: 'src/database', from: 'certs', to: 'certs' },
       {
-        context: 'env_vars', from: 'prodenv', to: '.env', toType: 'file',
+        context: 'env', from: 'prod.env', to: '.env', toType: 'file',
       },
     ],
   }),
