@@ -1,7 +1,6 @@
 node_modules
 certs
 dist
-env
 db
 
 package-lock.json
