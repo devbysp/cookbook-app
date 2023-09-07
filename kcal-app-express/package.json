@@ -4,7 +4,7 @@
   "description": "Backend for kcal-app-react",
   "scripts": {
     "start": "cross-env DOTENV_CONFIG_PATH=env/local.env node -r dotenv/config src/index.js",
-    "build": "cross-env NODE_OPTIONS='--openssl-legacy-provider' webpack --config build/webpack.prod.conf.js",
+    "build": "webpack --config build/webpack.prod.conf.js",
     "build-dev": "webpack --config build/webpack.dev.conf.js"
   },
   "author": "Magyari Zoltán",
