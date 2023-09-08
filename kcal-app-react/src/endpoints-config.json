@@ -12,21 +12,12 @@
 				"serverNameMatch": "devbysp.com"
 			},
 			"urls": {
-				"envBaseUrl": "${docker}"
-			}
-		},
-		{
-			"when": {
-				"serverNameMatch": "devbysp.github.io"
-			},
-			"urls": {
-				"envBaseUrl": "${codesandbox}"
+				"envBaseUrl": "${production}"
 			}
 		}
 	],
 	"servers": {
 		"localhost": "http://localhost:4000",
-		"docker": "http://devbysp.com",
-		"codesandbox": "https://42xrl2-4000.csb.app"
+		"production": "http://devbysp.com"
 	}
 }
