@@ -1,14 +1,26 @@
 import configuration from '../endpoints-config.json';
 
+const backendBasePath = process.env.REACT_APP_BACKEND_BASE_PATH || 'kcal-app';
+const backendPort = process.env.REACT_APP_BACKEND_PORT || 4001;
+
 const resolvedConfig = resolveConfig();
 
 function resolveConfig() {
   const config = { ...configuration };
   config.urls.envBaseUrl = getEnvBaseUrl(configuration);
+  Object.keys(config.servers)
+    .forEach((entry) => {
+      const url = config.servers[entry];
+      config.servers[entry] = replacePlaceHolders(url, { BACKEND_PORT: backendPort });
+    });
   Object.keys(config.urls)
     .forEach((entry) => {
       const url = config.urls[entry];
-      config.urls[entry] = replacePlaceHolders(url, { ...config.urls, ...config.servers });
+      config.urls[entry] = replacePlaceHolders(url, {
+        ...config.urls,
+        ...config.servers,
+        BACKEND_BASE_PATH: backendBasePath,
+      });
     });
   Object.keys(config.endpoints)
     .forEach((entry) => {

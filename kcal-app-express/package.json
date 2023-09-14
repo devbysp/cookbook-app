@@ -1,14 +1,12 @@
 {
   "name": "kcal-app-backend",
-  "version": "2.0.0",
-  "description": "Backend for kcal-app-react",
-  "scripts": {
-    "start": "cross-env DOTENV_CONFIG_PATH=env/local.env node -r dotenv/config src/index.js",
-    "build": "webpack --config build/webpack.prod.conf.js",
-    "build-dev": "webpack --config build/webpack.dev.conf.js"
-  },
+  "description": "backend for kcal-app",
   "author": "Magyari Zoltán",
   "license": "ISC",
+  "scripts": {
+    "start": "cross-env PORT=4001 cross-env BASE_PATH=kcal-app node -r dotenv/config src/index.js",
+    "build": "webpack --config webpack/prod.config.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",

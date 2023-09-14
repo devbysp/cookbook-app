@@ -3,7 +3,7 @@
 		"food": "${baseUrl}/food"
 	},
 	"urls": {
-		"baseUrl": "${envBaseUrl}/kcal-app",
+		"baseUrl": "${envBaseUrl}/${BACKEND_BASE_PATH}",
 		"envBaseUrl": "${localhost}"
 	},
 	"environments": [
@@ -17,7 +17,7 @@
 		}
 	],
 	"servers": {
-		"localhost": "http://localhost:4000",
+		"localhost": "http://localhost:${BACKEND_PORT}",
 		"production": "http://devbysp.com"
 	}
 }

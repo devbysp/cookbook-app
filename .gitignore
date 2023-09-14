@@ -1,6 +1,4 @@
 node_modules
 certs
-dist
-db
 
 package-lock.json

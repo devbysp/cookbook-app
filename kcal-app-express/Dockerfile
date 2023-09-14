@@ -4,12 +4,17 @@ FROM node:16.14.2-alpine
 WORKDIR /usr/src/kcal-app
 
 # Boundle app sources
-COPY dist/app.js* .
+COPY build/app.js* .
 
 # Copy certificates
-COPY dist/certs ./certs
+COPY build/.certs .certs
 
-# Create mount folder for database
-RUN mkdir db
+ARG BASE_PATH
+ARG PORT
+
+ENV BASE_PATH=${BASE_PATH}
+ENV PORT=${PORT}
+
+EXPOSE ${PORT}
 
 CMD ["node", "app.js"]

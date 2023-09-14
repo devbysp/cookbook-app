@@ -3,6 +3,3 @@
 
 # Allowed directory
 !build/**
-
-# Ignore unnecessary files inside allowed
-build/.env

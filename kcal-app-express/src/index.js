@@ -9,8 +9,8 @@ const { validateNewFood } = require('./helpers/validation');
 const { createTechnicalException } = require('./helpers/utils');
 
 const app = express();
-const port = process.env.BACKEND_PORT;
-const basePath = withSlash(process.env.BACKEND_BASE_PATH);
+const port = process.env.PORT;
+const basePath = withSlash(process.env.BASE_PATH);
 
 /* -------------------------------------------------------------------------- *
  * Application configurations

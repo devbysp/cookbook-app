@@ -1,20 +1,33 @@
 version: '3'
 services:
   backend:
-    image: 'devbysp/kcal-app-backend:${TAG}'
+    image: '${COMPANY}/${PROJECT_NAME}-backend:${VERSION}'
     build:
       context: kcal-app-express
+      args:
+        BASE_PATH: 'kcal-app'
+        PORT: '6001'
     env_file:
-      - kcal-app-express/dist/.env
+      - kcal-app-express/.env
     ports:
-      - "4000"
-    volumes:
-      - ./db:/usr/src/kcal-app/db:rw
+      - '6001'
+  frontend:
+    image: '${COMPANY}/${PROJECT_NAME}-frontend:${VERSION}'
+    build:
+      context: kcal-app-react
+      args:
+        BASE_PATH: 'kcal-app-react'
+        PORT: '5001'
+        BACKEND_BASE_PATH: 'kcal-app'
+        BACKEND_PORT: '6001'
+    ports:
+      - '5001'
   nginx:
     image: nginx:1.25.2-alpine-slim
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - backend
+      - frontend
     ports:
-      - "80:80"
+      - '80:80'
