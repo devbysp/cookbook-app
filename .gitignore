@@ -1,4 +1,5 @@
 node_modules
-certs
+build
 
 package-lock.json
+*.crt
