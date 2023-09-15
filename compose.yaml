@@ -17,7 +17,6 @@ services:
       context: kcal-app-react
       args:
         BASE_PATH: 'kcal-app-react'
-        PORT: '5001'
         BACKEND_BASE_PATH: 'kcal-app'
         BACKEND_PORT: '6001'
     ports:
