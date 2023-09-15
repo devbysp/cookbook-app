@@ -19,6 +19,8 @@ services:
         BASE_PATH: 'kcal-app-react'
         BACKEND_BASE_PATH: 'kcal-app'
         BACKEND_PORT: '6001'
+    ports:
+      - '80'
   nginx:
     image: nginx:1.25.2-alpine-slim
     volumes:
