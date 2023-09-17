@@ -1,7 +1,7 @@
 {
-  "homepage": "http://devbysp.com/kcal-app-react",
+  "homepage": "http://devbysp.com/kcal-app",
   "name": "kcal-app-frontend",
-  "description": "frontend for kcal-app",
+  "description": "The frontend app for kcal-app project",
   "author": "Magyari Zoltán",
   "license": "ISC",
   "scripts": {

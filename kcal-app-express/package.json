@@ -1,10 +1,10 @@
 {
   "name": "kcal-app-backend",
-  "description": "backend for kcal-app",
+  "description": "The backend app for kcal-app project",
   "author": "Magyari Zoltán",
   "license": "ISC",
   "scripts": {
-    "start": "cross-env PORT=4001 cross-env BASE_PATH=kcal-app node -r dotenv/config src/index.js",
+    "start": "cross-env PORT=4001 cross-env BASE_PATH=kcal-app-backend node -r dotenv/config src/index.js",
     "build": "webpack --config webpack/prod.config.js"
   },
   "dependencies": {

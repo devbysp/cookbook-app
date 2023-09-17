@@ -5,7 +5,7 @@ services:
     build:
       context: kcal-app-express
       args:
-        BASE_PATH: 'kcal-app'
+        BASE_PATH: 'kcal-app-backend'
         PORT: '6001'
     env_file:
       - kcal-app-express/.env
@@ -16,8 +16,8 @@ services:
     build:
       context: kcal-app-react
       args:
-        BASE_PATH: 'kcal-app-react'
-        BACKEND_BASE_PATH: 'kcal-app'
+        BASE_PATH: 'kcal-app'
+        BACKEND_BASE_PATH: 'kcal-app-backend'
         BACKEND_PORT: '6001'
     ports:
       - '80'
