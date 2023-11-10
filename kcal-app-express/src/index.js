@@ -23,7 +23,7 @@ app.use(express.json());
  * Application init
  * -------------------------------------------------------------------------- */
 const server = app.listen(port, () => {
-  logger.info(`KCal app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
+  logger.info(`Cookbook app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
   db.createFoodTable()
     .catch((error) => {
       throw createTechnicalException('Unexpected error occured', error);
