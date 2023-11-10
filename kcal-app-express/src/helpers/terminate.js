@@ -2,12 +2,13 @@ const logger = require('./logger/logger');
 
 function logErrorStack(error) {
   let errorIterator = error;
-  logger.debug('--------------------');
-  logger.debug('Error stack:');
+  logger.debug('--- Error Stack ----');
+
   while (errorIterator) {
-    logger.debug(`${errorIterator.message}`);
+    logger.debug(` ${errorIterator.message}`);
     errorIterator = errorIterator.cause;
   }
+
   logger.debug('--------------------');
 }
 
