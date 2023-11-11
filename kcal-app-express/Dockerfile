@@ -6,9 +6,6 @@ WORKDIR /usr/src/kcal-app
 # Boundle app sources
 COPY build/app.js* .
 
-# Copy certificates
-COPY build/.certs .certs
-
 ARG BASE_PATH
 ARG PORT
 

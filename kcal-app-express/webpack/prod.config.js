@@ -6,7 +6,6 @@ base.plugins = [
   ...base.plugins,
   new CopyPlugin({
     patterns: [
-      { context: 'src/database', from: '.certs', to: '.certs' },
       {
         context: '.', from: '.env', to: '.env', toType: 'file',
       },
