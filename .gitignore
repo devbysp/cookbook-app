@@ -1,7 +1,6 @@
+# Folders
 node_modules
-database
 build
-db
 
+# Files
 package-lock.json
-*.crt
