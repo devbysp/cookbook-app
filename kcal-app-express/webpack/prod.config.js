@@ -1,4 +1,4 @@
-const CopyPlugin = require('copy-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
+const CopyPlugin = require('copy-webpack-plugin');
 const base = require('./base.config');
 
 base.mode = 'production';

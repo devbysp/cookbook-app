@@ -1,2 +1,3 @@
 // Makes the rest of the code independent of the sql library adapter
-export * from './mysql-adapter';
+const adapter = require('./mysql-adapter')
+exports.module = adapter
