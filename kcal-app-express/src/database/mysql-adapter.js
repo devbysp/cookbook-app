@@ -1,25 +1,20 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const logger = require('../helpers/logger/logger');
 const { createTechnicalException } = require('../helpers/utils');
 
 // Two calls to query(sql) may use two different connections and run in parallel
-const pool = mysql.createPool({
+const connectionData = {
   connectionLimit: 10,
+  waitForConnections: true,
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT,
+  database: process.env.DATABASE_NAME,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWD,
-  database: process.env.DATABASE_NAME,
-});
+};
 
-logger.debug(JSON.stringify({
-  connectionLimit: 10,
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWD,
-  database: process.env.DATABASE_NAME,
-}, undefined, 2));
+logger.debug(JSON.stringify(connectionData, undefined, 2));
+const pool = mysql.createPool(connectionData);
 
 pool.on('acquire', (connection) => {
   logger.debug(`Connection ${connection.threadId} acquired`);

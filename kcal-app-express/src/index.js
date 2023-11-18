@@ -24,10 +24,16 @@ app.use(express.json());
  * -------------------------------------------------------------------------- */
 const server = app.listen(port, () => {
   logger.info(`Cookbook app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
-  db.createFoodTable()
-    .catch((error) => {
-      throw createTechnicalException('Unexpected error occured', error);
-    });
+  const timeout = 10000;
+
+  setTimeout(() => {
+    logger.info(`Timeout for ${timeout} miliseconds`);
+
+    db.createFoodTable()
+      .catch((error) => {
+        throw createTechnicalException('Unexpected error occured', error);
+      });
+  }, timeout);
 });
 
 /* -------------------------------------------------------------------------- *
