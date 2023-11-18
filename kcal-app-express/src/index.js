@@ -3,10 +3,9 @@ const cors = require('cors');
 const terminate = require('./helpers/terminate');
 const logger = require('./helpers/logger/logger');
 
-const db = require('./database/data-access-layer');
+const db = require('./database');
 const { withSlash } = require('./helpers/utils');
 const { validateNewFood } = require('./helpers/validation');
-const { createTechnicalException } = require('./helpers/utils');
 
 const app = express();
 const port = process.env.PORT;
@@ -24,16 +23,6 @@ app.use(express.json());
  * -------------------------------------------------------------------------- */
 const server = app.listen(port, () => {
   logger.info(`Cookbook app server is up. Listens on port: '${port}' base path: '${basePath}'.`);
-  const timeout = 10000;
-
-  setTimeout(() => {
-    logger.info(`Timeout for ${timeout} miliseconds`);
-
-    db.createFoodTable()
-      .catch((error) => {
-        throw createTechnicalException('Unexpected error occured', error);
-      });
-  }, timeout);
 });
 
 /* -------------------------------------------------------------------------- *

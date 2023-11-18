@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
-const logger = require('../helpers/logger/logger');
-const { createTechnicalException } = require('../helpers/utils');
+const logger = require('../../helpers/logger/logger');
+const { createTechnicalException } = require('../../helpers/utils');
 
 // Two calls to query(sql) may use two different connections and run in parallel
 const connectionData = {

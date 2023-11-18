@@ -1,12 +1,6 @@
-const { createTechnicalException } = require('../helpers/utils');
-const db = require('./mysql-adapter');
-
-const migration = require('./migration/2023_09_03_create_food_table');
+const { createTechnicalException } = require('../../helpers/utils');
+const db = require('../adapter/database');
 const sql = require('./queries');
-
-async function createFoodTable() {
-  return migration.createFoodTable();
-}
 
 async function getAllFoods() {
   return db.query(sql.SELECT_ALL_FOODS)
@@ -40,7 +34,6 @@ async function deleteFood(id) {
 }
 
 module.exports = {
-  createFoodTable,
   getAllFoods,
   addNewFood,
   deleteFood,
