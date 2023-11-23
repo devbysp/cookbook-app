@@ -1,6 +1,5 @@
 const mysql = require('mysql2');
-const logger = require('../../helpers/logger/logger');
-const { createTechnicalException } = require('../../helpers/utils');
+const { createException, logger } = require('..');
 
 // Two calls to query(sql) may use two different connections and run in parallel
 const connectionData = {
@@ -28,14 +27,14 @@ async function query(sql, params) {
   return new Promise((resolve, reject) => {
     pool.getConnection((connectionError, connection) => {
       if (connectionError) {
-        reject(createTechnicalException('Error getting a connection from connection pool.', connectionError));
+        reject(createException('Error getting a connection from connection pool.', connectionError));
         return;
       }
 
-      connection.query(sql, params, (error, records, fields) => {
+      connection.query(sql, params, (queryError, records, fields) => {
         connection.release();
-        if (error) {
-          reject(createTechnicalException(`Error executing query. '${sql}'`, error));
+        if (queryError) {
+          reject(createException(`Error executing query. '${sql}'`, queryError));
           return;
         }
 
@@ -47,5 +46,5 @@ async function query(sql, params) {
 }
 
 module.exports = {
-  query,
+  query
 };

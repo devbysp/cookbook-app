@@ -1,4 +1,4 @@
-const { createBusinessException } = require('./utils');
+const { createException } = require('../../frameworks');
 
 async function validateNewFood(food) {
   const requiredProps = ['foodName', 'kcal', 'fat', 'saturatedFat', 'carbs', 'sugar', 'fiber', 'protein'];
@@ -7,18 +7,18 @@ async function validateNewFood(food) {
 
   const missingProps = requiredProps.filter((prop) => (!props.includes(prop)));
   if (missingProps.length) {
-    throw createBusinessException(`Some reqired props are missing: ${missingProps}`);
+    throw createException(`Some reqired props are missing: ${missingProps}`);
   }
 
   const emptyProps = requiredProps.filter((prop) => (!food[prop]));
   if (emptyProps.length) {
-    throw createBusinessException(`Some reqired props are empty: ${emptyProps}`);
+    throw createException(`Some reqired props are empty: ${emptyProps}`);
   }
 
   const wrongPropType = requiredProps
     .filter((prop, index) => (typeof (food[prop]) !== propTypes[index]));
   if (wrongPropType.length) {
-    throw createBusinessException(`Some props have incorrect type: ${wrongPropType}`);
+    throw createException(`Some props have incorrect type: ${wrongPropType}`);
   }
 }
 

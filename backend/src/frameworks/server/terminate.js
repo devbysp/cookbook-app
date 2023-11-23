@@ -1,18 +1,18 @@
-const logger = require('./logger/logger');
+const { logger } = require('..');
 
 function logErrorStack(error) {
   let errorIterator = error;
   logger.debug('--- Error Stack ----');
 
   while (errorIterator) {
-    logger.debug(` ${errorIterator.message}`);
+    logger.debug(`${errorIterator.message}`);
     errorIterator = errorIterator.cause;
   }
-
   logger.debug('--------------------');
 }
 
 function terminate(server, options = { coredump: false, timeout: 500 }) {
+  
   // Exit function
   const exit = (code) => {
     if (options.coredump) {
@@ -24,7 +24,6 @@ function terminate(server, options = { coredump: false, timeout: 500 }) {
     }
   };
 
-  // eslint-disable-next-line no-unused-vars
   return (_code, _reason) => (error, _promise) => {
     if (error && error instanceof Error) {
       logErrorStack(error);
@@ -37,4 +36,4 @@ function terminate(server, options = { coredump: false, timeout: 500 }) {
   };
 }
 
-module.exports = terminate;
+module.exports = { terminate };

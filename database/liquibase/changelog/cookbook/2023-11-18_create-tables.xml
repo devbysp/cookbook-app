@@ -1,0 +1,115 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+<changeSet id="1" author="devbysp">
+  <!-- foods -->
+  <createTable tableName="foods">
+    <column name="id" type="INT" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false"/>
+    </column>
+
+    <column name="name" type="VARCHAR(255)">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="protein" type="FLOAT">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="fat" type="FLOAT">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="saturated_fat" type="FLOAT">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="carbohidrates" type="FLOAT">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="sugar" type="FLOAT">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="dietary_fiber" type="FLOAT">
+      <constraints nullable="false"/>
+    </column>
+  </createTable>
+
+  <!-- serving_sizes -->
+  <createTable tableName="serving_sizes">
+    <column name="id" type="INT" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false"/>
+    </column>
+
+    <column name="name" type="VARCHAR(4)">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="quantity_in_gramms" type="FLOAT">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="food_id" type="INT">
+      <constraints nullable="false" foreignKeyName="fk_foods_serving_sizes" references="foods(id)"/>
+    </column>
+  </createTable>
+
+  <!-- recipes -->
+  <createTable tableName="recipes">
+    <column name="id" type="INT" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false"/>
+    </column>
+
+    <column name="name" type="VARCHAR(255)">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="category" type="VARCHAR(40)">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="servings" type="INT">
+      <constraints nullable="false"/>
+    </column>
+  </createTable>
+
+  <!-- steps -->
+  <createTable tableName="steps">
+    <column name="id" type="INT" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false"/>
+    </column>
+
+    <column name="name" type="VARCHAR(4)">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="description" type="VARCHAR(255)">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="recipe_id" type="INT">
+      <constraints nullable="false" foreignKeyName="fk_recipes_steps" references="recipes(id)"/>
+    </column>
+  </createTable>
+
+  <!-- ingredients -->
+  <createTable tableName="ingredients">
+    <column name="food_id" type="INT">
+      <constraints nullable="false" foreignKeyName="fk_foods_ingredients" references="foods(id)"/>
+    </column>
+
+    <column name="serving_size_id" type="INT">
+      <constraints nullable="false" foreignKeyName="fk_serving_sizes_ingredients" references="serving_sizes(id)"/>
+    </column>
+
+    <column name="recipe_id" type="INT">
+      <constraints nullable="false" foreignKeyName="fk_recipes_ingredients" references="recipes(id)"/>
+    </column>
+  </createTable>
+</changeSet>
+
+</databaseChangeLog>

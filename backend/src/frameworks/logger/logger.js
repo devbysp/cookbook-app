@@ -1,7 +1,15 @@
 const winston = require('winston');
 const app = require('./.logger.config');
 
-// Set up logger
+/* -----------------------------------------------------------------------------
+ *  LOGGER EXAMPLES
+ * -----------------------------------------------------------------------------
+ *  logger.debug('testing');
+ *  logger.info('testing');
+ *  logger.warn('testing');
+ *  logger.error('testing');
+ */
+
 const customColors = {
   debug: 'blue',
   info: 'green',
@@ -40,11 +48,4 @@ logger.log = (level, msg) => {
   }
 };
 
-/* LOGGER EXAMPLES
-    logger.debug('testing');
-    logger.info('testing');
-    logger.warn('testing');
-    logger.error('testing');
-*/
-
-module.exports = logger;
+module.exports = { logger };

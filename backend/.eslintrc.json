@@ -11,7 +11,7 @@
     "rules": {
         "import/prefer-default-export": "off",
         "import/no-dynamic-require": "off",
-        "no-console": "off",
-        "valid-typeof": "off"
+        "valid-typeof": "off",
+        "no-console": "off"
     }
 }
