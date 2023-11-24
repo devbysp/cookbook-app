@@ -1,34 +1,30 @@
-// Libraries
+// -----------------------------------------------------------------------------
+// Adapts the express library to an interface used by the application.
+//
+// Configures and starts an express server, serving REST api calls with json 
+// format.
+// -----------------------------------------------------------------------------
+
 const express = require('express');
 const cors = require('cors');
 
-// Frameworks
-const { logger } = require('..');
-
-// Internal
+const { logger } = require('../../../utils');
 const { terminate } = require('./terminate');
 
-// Globals
 const app = express();
 const port = process.env.PORT;
 
-/* -------------------------------------------------------------------------- *
- * Application configurations
- * -------------------------------------------------------------------------- */
+// Application configurations
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/* -------------------------------------------------------------------------- *
- * Application init
- * -------------------------------------------------------------------------- */
+// Application init
 const server = app.listen(port, () => {
   logger.info(`Cookbook app server is up. Listens on port: '${port}'.`);
 });
 
-/* -------------------------------------------------------------------------- *
- * Error handling
- * -------------------------------------------------------------------------- */
+ // Error handling
 const exitHandler = terminate(server, {
   coredump: false,
   timeout: 500,
@@ -39,4 +35,4 @@ process.on('unhandledRejection', exitHandler(1, 'Unhandled Promise'));
 process.on('SIGTERM', exitHandler(0, 'SIGTERM'));
 process.on('SIGINT', exitHandler(0, 'SIGINT'));
 
-exports.module = { app }
+module.exports = app; 

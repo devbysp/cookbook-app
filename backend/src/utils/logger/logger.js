@@ -1,21 +1,5 @@
 const winston = require('winston');
-const app = require('./.logger.config');
-
-/* -----------------------------------------------------------------------------
- *  LOGGER EXAMPLES
- * -----------------------------------------------------------------------------
- *  logger.debug('testing');
- *  logger.info('testing');
- *  logger.warn('testing');
- *  logger.error('testing');
- */
-
-const customColors = {
-  debug: 'blue',
-  info: 'green',
-  warn: 'yellow',
-  error: 'red',
-};
+const { customColors, logLevel } = require('./logger.config');
 
 const customFormat = winston.format.combine(
   winston.format.cli({ colors: customColors }),
@@ -27,7 +11,7 @@ const customFormat = winston.format.combine(
 );
 
 const logger = winston.createLogger({
-  level: app.settings.logLevel,
+  level: logLevel,
   format: customFormat,
   transports: [
     new winston.transports.Console(),
@@ -48,4 +32,9 @@ logger.log = (level, msg) => {
   }
 };
 
-module.exports = { logger };
+module.exports = { 
+  debug: logger.debug,
+  info:  logger.info,
+  wran:  logger.warn,
+  error: logger.error
+};
