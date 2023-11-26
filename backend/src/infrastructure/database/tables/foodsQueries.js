@@ -1,6 +1,3 @@
-// -----------------------------------------------------------------------------
-// foods
-// -----------------------------------------------------------------------------
 const SELECT_ALL_FOODS = 'SELECT * FROM foods';
 
 const INSERT_FOOD = `
@@ -13,7 +10,6 @@ const DELETE_FOOD = `
     WHERE id = ?
 `;
 
-// Interface
 module.exports = {
   SELECT_ALL_FOODS,
   INSERT_FOOD,

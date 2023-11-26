@@ -1,13 +1,28 @@
 const app = require('../adapters');
 const foodService = require('../../../services/food/foodService');
-const { withSlash } = require('../../../utils/path/path');
+const { 
+  logger, 
+  withSlash, 
+  ExceptionTypes, 
+  wrapException
+} = require('../../../utils');
 
 const basePath = withSlash(process.env.BASE_PATH);
 
-app.get(`${basePath}/food`, (_req, res) => {
-  foodService.getAllFoods()
-    .then((result) => res.send(result))
-    .catch((error) => res.status(500).send(error));
+app.get(`${basePath}/food`, async (_req, res) => {
+  try {
+    logger.debug(`GET: ${basePath}/food`);
+
+    const result = await foodService.getAllFoods();
+    res.send(result);
+  }
+  catch(error) {
+    res.status(500).send(error)
+
+    if(error.type === ExceptionTypes.CRITICAL) {
+      throw wrapException(`GET: ${basePath}/food failed`, error);
+    }
+  }
 });
 
 // endpoint.post(`${basePath}/food`, (req, res) => {

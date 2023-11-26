@@ -1,4 +1,4 @@
-exports.module = {
+module.exports = {
     logLevel: 'debug', // debug, info, warn, error
     customColors: {
         debug: 'blue',

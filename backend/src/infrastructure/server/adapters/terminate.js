@@ -1,14 +1,17 @@
-const { logger } = require('..');
+const { logger } = require('../../../utils');
 
-function logErrorStack(error) {
+function logErrorStack(error, reason, code) {
   let errorIterator = error;
-  logger.debug('--- Error Stack ----');
+
+  logger.debug('--- Error Stack -----------------------------------------------------------------');
+  logger.error(`${reason} {error code: ${code}}`)
 
   while (errorIterator) {
-    logger.debug(`${errorIterator.message}`);
+    logger.error(`${errorIterator.message}`);
     errorIterator = errorIterator.cause;
   }
-  logger.debug('--------------------');
+
+  logger.debug('---------------------------------------------------------------------------------');
 }
 
 function terminate(server, options = { coredump: false, timeout: 500 }) {
@@ -16,18 +19,19 @@ function terminate(server, options = { coredump: false, timeout: 500 }) {
   // Exit function
   const exit = (code) => {
     if (options.coredump) {
-      logger.debug('Process aborted');
+      logger.warn('Process aborted');
       process.abort();
-    } else {
-      logger.debug('Server stopped');
+    } 
+    else {
+      logger.warn('Server stopped');
       process.exit(code);
     }
   };
 
-  return (_code, _reason) => (error, _promise) => {
+  return (code, reason) => (error, _promise) => {
     if (error && error instanceof Error) {
-      logErrorStack(error);
-      logger.debug('Shutting down server ...');
+      logErrorStack(error, reason, code);
+      logger.warn('Shutting down server ...');
     }
 
     // Attempt a graceful shutdown

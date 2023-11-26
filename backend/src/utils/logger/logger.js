@@ -1,5 +1,5 @@
 const winston = require('winston');
-const { customColors, logLevel } = require('./logger.config');
+const { customColors, logLevel } = require('./.logger.config');
 
 const customFormat = winston.format.combine(
   winston.format.cli({ colors: customColors }),
@@ -32,9 +32,4 @@ logger.log = (level, msg) => {
   }
 };
 
-module.exports = { 
-  debug: logger.debug,
-  info:  logger.info,
-  wran:  logger.warn,
-  error: logger.error
-};
+module.exports = logger;
