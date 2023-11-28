@@ -1,4 +1,7 @@
-const { withExceptionHandling } = require('../../../src/utils');
+const { 
+  createExceptionHandler,
+  withExceptionHandling 
+} = require('../../../src/utils');
 
 describe('Aspect oriented exception handling', () => {
 
@@ -6,17 +9,17 @@ describe('Aspect oriented exception handling', () => {
     const message = 'wrapped error message';
     const MockError = new Error('mock error');
 
-    test(' if wrapper is not applied to a function -> then it throws an exception', () => {
+    test('if wrapper is not applied to a function -> then it throws an exception', () => {
       expect(() => withExceptionHandling({}, message)).toThrow('Not a function');
     });
 
-    test(' if sync function throws an exception -> the causing error gets wrapped inside a new error', () => {
+    test('if sync function throws an exception -> the causing error gets wrapped inside a new error', () => {
       const wrapped = withExceptionHandling(() => { throw MockError; }, message);
       expect(wrapped).toThrowWithCause(message, MockError);
 
     });
 
-    test(' if sync function returns a rejected Promise -> the causing error gets wrapped inside a new error', () => {
+    test('if sync function returns a rejected Promise -> the causing error gets wrapped inside a new error', () => {
       const wrapped = withExceptionHandling(
         () => new Promise((accept, reject) => reject(MockError)), 
         message);
@@ -24,20 +27,19 @@ describe('Aspect oriented exception handling', () => {
 
     });
 
-    test(' if sync function returns a value -> the wrapping function returns the same value', async () => {
+    test('if sync function returns a value -> the wrapping function returns the same value', async () => {
       const retval = 'return value';
       const wrapped = withExceptionHandling(() => { return retval }, message);
       expect(await wrapped()).toEqual(retval);
     });
 
-
-    test(' if async function throws an exception -> the causing error gets wrapped inside a new error', () => {
+    test('if async function throws an exception -> the causing error gets wrapped inside a new error', () => {
       const wrapped = withExceptionHandling(async () => { throw MockError; }, message);
       expect(wrapped).toThrowWithCause(message, MockError);
 
     });
 
-    test(' if async function returns a rejected Promise -> the causing error gets wrapped inside a new error', () => {
+    test('if async function returns a rejected Promise -> the causing error gets wrapped inside a new error', () => {
       const wrapped = withExceptionHandling(
         async () => new Promise((accept, reject) => reject(MockError)), 
         message);
@@ -45,10 +47,29 @@ describe('Aspect oriented exception handling', () => {
 
     });
 
-    test(' if async function returns a value -> the wrapping function returns the same value', async () => {
+    test('if async function returns a value -> the wrapping function returns the same value', async () => {
       const retval = 'return value';
       const wrapped = withExceptionHandling(async () => { return retval }, message);
       expect(await wrapped()).toEqual(retval);
+    });
+
+    test('using an exception handler with logger -> will log the errors', () => {
+      const logger = { debug: jest.fn() };
+      const withExceptionLogging = createExceptionHandler({ logger });
+      const wrapped = withExceptionLogging(() => { throw MockError; }, message);
+
+      expect(wrapped).toThrowWithCause(message, MockError);
+      expect(logger.debug).toBeCalledWith(`Error: ${message}`);
+    });
+
+    test('if async function returns a value -> the wrapping function returns the same value', async () => {
+      const retval = 'returned value';
+      const logger = { debug: jest.fn() };
+      const withExceptionLogging = createExceptionHandler({ logger });
+      const wrapped = withExceptionLogging(async () => { return retval }, message);
+
+      expect(await wrapped()).toEqual(retval);
+      expect(logger.debug).toBeCalledWith(`Success: ${JSON.stringify(retval)}`);
     });
 
   });
