@@ -4,6 +4,13 @@ Hosting: http://devbysp.com/kcal-app-react
 
 Github: https://github.com/devbysp/kcal-app
 
+## Architecture
+
+This section describes the architecture of this application.
+
+- [Data model](doc/datamodel/readme-datamodel.md)
+- [Backend architecture](doc/backend/readme-backend.md)
+
 ## Build & Run
 
 ### Local dev environment
